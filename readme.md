@@ -10,7 +10,7 @@ Clone the repository, in the project directory, run the command
 
     ionic serve
 
-this runs the app in development mode. Open  [http://localhost:8100] (http://localhost:8100) to view it in the browser.
+this runs the app in development mode. Open  [http://localhost:8100](http://localhost:8100) to view it in the browser.
 
 
 
