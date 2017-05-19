@@ -7,15 +7,15 @@
 <br>
 <ion-content>
   <ion-list>
-    <ion-item *ngFor="let item of context.items">
-      <ion-icon *ngIf="item['@type'] == 'Document'" name="document" item-left></ion-icon>
-      <ion-icon *ngIf="item['@type'] == 'Event'" name="calendar" item-left></ion-icon>
-      <ion-icon *ngIf="item['@type'] == 'Folder'" name="folder" item-left></ion-icon>
-      <a class="local-nav" [traverseTo]="item['@id']">
-        <h2>{{item.title | titlecase}}</h2>
-        <p>{{item['@type']}}</p>
-      </a>
-    </ion-item>
+    <a *ngFor="let item of context.items" [traverseTo]="item['@id']">
+      <button ion-item class="local-nav">
+          <ion-icon *ngIf="item['@type'] == 'Document'" name="document" item-left></ion-icon>
+          <ion-icon *ngIf="item['@type'] == 'Event'" name="calendar" item-left></ion-icon>
+          <ion-icon *ngIf="item['@type'] == 'Folder'" name="folder" item-left></ion-icon>
+          <h2>{{item.title | titlecase}}</h2>
+          <p>{{item['@type']}}</p>
+      </button>
+    </a>
   </ion-list>
 
   <p *ngIf="context.text" [innerHTML]="context.text.data"></p>

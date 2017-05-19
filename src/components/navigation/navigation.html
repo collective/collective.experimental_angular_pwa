@@ -1,6 +1,6 @@
 <ion-list>
-  <li ion-item *ngFor="let link of links" class="list-group-item" [ngClass]="{'active-link': link.active}">
-    <a [traverseTo]="link.properties['@id']">{{ link.properties.title }}</a>
+    <a *ngFor="let link of links" [traverseTo]="link.properties['@id']">
+      <button ion-item menuToggle>{{ link.properties.title }}</button>
+    </a>
     <!--<plone-navigation-level [links]="link.children" *ngIf="link.children"></plone-navigation-level>-->
-  </li>
 </ion-list>
