@@ -3,8 +3,6 @@
     <ion-title><custom-breadcrumbs></custom-breadcrumbs></ion-title>
   </ion-toolbar>
 </ion-header>
-<br>
-<br>
 <ion-content>
   <ion-list>
     <a *ngFor="let item of context.items" [traverseTo]="item['@id']">
