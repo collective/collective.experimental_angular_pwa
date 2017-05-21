@@ -1,4 +1,5 @@
 <ion-list>
+    <a traverseTo="/"><button ion-item menuToggle>Home</button></a>
     <a *ngFor="let link of links" [traverseTo]="link.properties['@id']">
       <button ion-item menuToggle>{{ link.properties.title }}</button>
     </a>
