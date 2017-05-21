@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Plone</ion-title>
+  </ion-navbar>
+  <ion-toolbar color="secondary">
+    <ion-title>Settings</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content padding>
+  <ion-item>
+    <ion-label>Download content for offline reading</ion-label>
+    <ion-toggle [(ngModel)]="readOffline" (ionChange)="toggleDownload()"></ion-toggle>
+  </ion-item>
+</ion-content>
