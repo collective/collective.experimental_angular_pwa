@@ -7,9 +7,7 @@ import { RESTAPIModule } from '@plone/restapi-angular';
 import { CloudSettings, CloudModule } from '@ionic/cloud-angular';
 
 import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
-import { PopoverPage } from '../pages/popover/popover';
-import { SearchPage } from '../pages/search/search';
+import { HomePage, PopoverPage, SearchPage, SettingsPage } from '../pages/pages';
 import { NavigationComponent } from '../components/navigation/navigation';
 import { CustomEventComponent } from '../components/custom-event/custom-event';
 import { CustomBreadcrumbsComponent } from '../components/custom-breadcrumbs/custom-breadcrumbs';
@@ -26,6 +24,7 @@ const cloudSettings: CloudSettings = {
     HomePage,
     PopoverPage,
     SearchPage,
+    SettingsPage,
     NavigationComponent,
     CustomEventComponent,
     CustomBreadcrumbsComponent
@@ -42,7 +41,8 @@ const cloudSettings: CloudSettings = {
     HomePage,
     CustomEventComponent,
     PopoverPage,
-    SearchPage
+    SearchPage,
+    SettingsPage
   ],
   providers: [
     StatusBar,
@@ -51,7 +51,7 @@ const cloudSettings: CloudSettings = {
     {
       provide: 'CONFIGURATION', useValue: {
         BACKEND_URL: 'http://localhost:8080/Plone',
-      }
+      } 
     }
   ]
 })
