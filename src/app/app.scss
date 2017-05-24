@@ -14,3 +14,26 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+.truncate {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.context-title {
+    padding: 20px 15px 0px 15px;
+    margin-top: 0px;
+}
+.context-description {
+    padding: 5px 15px;
+    margin-top: 0px;
+}
+
+.context-data {
+    padding: 0px 15px;
+    font-size: 1.7rem;
+}
+
+.page-padding {
+    margin-top: 20px;
+}
