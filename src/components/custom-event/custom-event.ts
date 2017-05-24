@@ -8,4 +8,14 @@ import { ViewView } from '@plone/restapi-angular';
 
 export class CustomEventComponent extends ViewView {
 
+    checkDates(end, start) {
+      // console.log(endDate, startDate);
+      let endDate = new Date(end).getDate();
+      let startDate = new Date(start).getDate();
+      if(endDate === startDate) {
+        return true;
+      }
+      else
+        return false;
+    }
 }

@@ -1,20 +1,36 @@
-<ion-header>
-  <ion-toolbar color="secondary">
-    <ion-title><custom-breadcrumbs></custom-breadcrumbs></ion-title>
-  </ion-toolbar>
-</ion-header>
-<ion-content>
-  <ion-list>
-    <a *ngFor="let item of context.items" [traverseTo]="item['@id']">
-      <button ion-item class="local-nav">
-          <ion-icon *ngIf="item['@type'] == 'Document'" name="document" item-left></ion-icon>
-          <ion-icon *ngIf="item['@type'] == 'Event'" name="calendar" item-left></ion-icon>
-          <ion-icon *ngIf="item['@type'] == 'Folder'" name="folder" item-left></ion-icon>
-          <h2>{{item.title | titlecase}}</h2>
-          <p>{{item['@type']}}</p>
-      </button>
-    </a>
-  </ion-list>
+<div class="page-padding">
+  <h3 class="context-title">{{context.title}}</h3>
+</div>
+<hr>
+<div *ngIf="context.description != ''">
+  <h4 class="context-description">{{context.description}}</h4>
+</div>
+<div class="context-data" [innerHTML]="context.text.data"></div>
 
-  <p *ngIf="context.text" [innerHTML]="context.text.data"></p>
-</ion-content>
+<ion-item-group>
+  <ion-item-divider>When</ion-item-divider>
+  <ion-list no-lines>
+    <ion-item>From : {{context.start | date:'longDate'}} {{context.start | date:'shortTime'}}</ion-item>
+    <ion-item *ngIf="checkDates(context.end, context.start)">To : {{context.end | date:'shortTime'}} </ion-item>
+    <ion-item *ngIf="!checkDates(context.end, context.start)">To : {{context.end | date:'longDate'}} {{context.end | date:'shortTime'}}</ion-item>
+    <ion-item>({{ context.start | date: 'Z'}})</ion-item>
+  </ion-list>
+</ion-item-group>
+
+<ion-item-group *ngIf="context.attendees.length != 0">
+  <ion-item-divider>Attendees</ion-item-divider>
+  <ion-list>
+    <ion-item *ngFor="let attendee of context.attendees">{{attendee}}</ion-item>
+  </ion-list>
+</ion-item-group>
+
+<ion-item-group>
+  <ion-item-divider>Contact Details</ion-item-divider>
+  <ion-list>
+    <ion-item><ion-icon name="contact" item-left></ion-icon>{{context.contact_name}}</ion-item>
+    <ion-item><ion-icon name="mail" item-left></ion-icon>{{context.contact_email}}</ion-item>
+    <ion-item> <ion-icon name="call" item-left></ion-icon>{{context.contact_phone}}</ion-item>
+  </ion-list>
+</ion-item-group>
+
+
