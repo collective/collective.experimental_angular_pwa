@@ -5,12 +5,13 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { RESTAPIModule } from '@plone/restapi-angular';
 import { CloudSettings, CloudModule } from '@ionic/cloud-angular';
+import { Marker } from 'angular-traversal';
 
 import { MyApp } from './app.component';
-import { HomePage, PopoverPage, SearchPage, SettingsPage } from '../pages/pages';
-import { NavigationComponent } from '../components/navigation/navigation';
-import { CustomEventComponent } from '../components/custom-event/custom-event';
-import { CustomBreadcrumbsComponent } from '../components/custom-breadcrumbs/custom-breadcrumbs';
+import { HomePage, PopoverPage, SearchPage, SettingsPage, TypeMarker } from '../pages/pages';
+import { NavigationComponent, CustomBreadcrumbsComponent, CustomEventComponent, 
+         CustomFolderComponent, CustomDocumentComponent , CustomPlonesiteComponent} from '../components/components';
+
 
 const cloudSettings: CloudSettings = {
   'core': {
@@ -27,7 +28,10 @@ const cloudSettings: CloudSettings = {
     SettingsPage,
     NavigationComponent,
     CustomEventComponent,
-    CustomBreadcrumbsComponent
+    CustomBreadcrumbsComponent,
+    CustomFolderComponent,
+    CustomDocumentComponent,
+    CustomPlonesiteComponent
   ],
   imports: [
     BrowserModule,
@@ -40,6 +44,9 @@ const cloudSettings: CloudSettings = {
     MyApp,
     HomePage,
     CustomEventComponent,
+    CustomFolderComponent,
+    CustomPlonesiteComponent,
+    CustomDocumentComponent,
     PopoverPage,
     SearchPage,
     SettingsPage
@@ -52,7 +59,8 @@ const cloudSettings: CloudSettings = {
       provide: 'CONFIGURATION', useValue: {
         BACKEND_URL: 'http://localhost:8080/Plone',
       } 
-    }
+    },
+    { provide: Marker, useClass: TypeMarker }
   ]
 })
 export class AppModule {}

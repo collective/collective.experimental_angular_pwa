@@ -1,9 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Injectable } from '@angular/core';
 import { NavController, PopoverController, ToastController } from 'ionic-angular';
-import { Traverser } from 'angular-traversal';
+import { Traverser, Marker } from 'angular-traversal';
 import { PloneViews } from '@plone/restapi-angular';
-import { CustomEventComponent } from '../../components/custom-event/custom-event';
+import { CustomEventComponent, CustomFolderComponent, CustomPlonesiteComponent,
+         CustomDocumentComponent } from '../../components/components';
 import { PopoverPage } from '../pages';
+
+@Injectable()
+export class TypeMarker extends Marker {
+  mark(context: any): string {
+    return context['@type'];  
+  }
+}
 
 @Component({
   selector: 'page-home',
@@ -19,7 +27,10 @@ export class HomePage implements OnInit {
               private popoverCtrl: PopoverController,
               private toastCtrl: ToastController) {
       this.views.initialize();
-      this.traverser.addView('view', '*', CustomEventComponent);
+      this.traverser.addView('view', 'Event', CustomEventComponent);
+      this.traverser.addView('view', 'Folder', CustomFolderComponent);
+      this.traverser.addView('view', 'Plone Site', CustomPlonesiteComponent);
+      this.traverser.addView('view', 'Document', CustomDocumentComponent);
   }
 
   ngOnInit() {
@@ -40,7 +51,7 @@ export class HomePage implements OnInit {
         } 
       }
       this.networkState = navigator.onLine;
-      console.log("network state", this.networkState);
+      // console.log("network state", this.networkState);
     }
 
   presentPopover(myEvent) {
