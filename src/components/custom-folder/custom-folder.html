@@ -1,0 +1,17 @@
+
+<ion-list class="page-padding">
+  <a *ngFor="let item of context.items" [traverseTo]="item['@id']">
+    <button ion-item class="local-nav">
+        <ion-icon *ngIf="item['@type'] == 'Document'" name="document" item-left></ion-icon>
+        <ion-icon *ngIf="item['@type'] == 'Event'" name="calendar" item-left></ion-icon>
+        <ion-icon *ngIf="item['@type'] == 'Folder'" name="folder" item-left></ion-icon>
+        <ion-icon *ngIf="item['@type'] == 'Image'" name="image" item-left></ion-icon>
+        <ion-icon *ngIf="item['@type'] == 'Link'" name="link" item-left></ion-icon>
+        <ion-icon *ngIf="item['@type'] == 'News Item'" name="megaphone" item-left></ion-icon>
+        <ion-icon *ngIf="item['@type'] == 'File'" name="attach" item-left></ion-icon>
+        <h2 class="truncate">{{item.title | titlecase}}</h2>
+        <p>{{item['@type']}}</p>
+    </button>
+  </a>
+</ion-list>
+
