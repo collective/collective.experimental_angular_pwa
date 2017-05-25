@@ -10,7 +10,9 @@ import { Marker } from 'angular-traversal';
 import { MyApp } from './app.component';
 import { HomePage, PopoverPage, SearchPage, SettingsPage, TypeMarker } from '../pages/pages';
 import { NavigationComponent, CustomBreadcrumbsComponent, CustomEventComponent, 
-         CustomFolderComponent, CustomDocumentComponent , CustomPlonesiteComponent} from '../components/components';
+         CustomFolderComponent, CustomDocumentComponent , CustomPlonesiteComponent,
+         CustomImageComponent, CustomLinkComponent } from '../components/components';
+
 
 
 const cloudSettings: CloudSettings = {
@@ -31,7 +33,9 @@ const cloudSettings: CloudSettings = {
     CustomBreadcrumbsComponent,
     CustomFolderComponent,
     CustomDocumentComponent,
-    CustomPlonesiteComponent
+    CustomPlonesiteComponent,
+    CustomImageComponent,
+    CustomLinkComponent
   ],
   imports: [
     BrowserModule,
@@ -47,6 +51,8 @@ const cloudSettings: CloudSettings = {
     CustomFolderComponent,
     CustomPlonesiteComponent,
     CustomDocumentComponent,
+    CustomImageComponent,
+    CustomLinkComponent,
     PopoverPage,
     SearchPage,
     SettingsPage

@@ -3,7 +3,7 @@ import { NavController, PopoverController, ToastController } from 'ionic-angular
 import { Traverser, Marker } from 'angular-traversal';
 import { PloneViews } from '@plone/restapi-angular';
 import { CustomEventComponent, CustomFolderComponent, CustomPlonesiteComponent,
-         CustomDocumentComponent } from '../../components/components';
+         CustomDocumentComponent, CustomImageComponent, CustomLinkComponent } from '../../components/components';
 import { PopoverPage } from '../pages';
 
 @Injectable()
@@ -31,6 +31,8 @@ export class HomePage implements OnInit {
       this.traverser.addView('view', 'Folder', CustomFolderComponent);
       this.traverser.addView('view', 'Plone Site', CustomPlonesiteComponent);
       this.traverser.addView('view', 'Document', CustomDocumentComponent);
+      this.traverser.addView('view', 'Image', CustomImageComponent);
+      this.traverser.addView('view', 'Link', CustomLinkComponent);
   }
 
   ngOnInit() {

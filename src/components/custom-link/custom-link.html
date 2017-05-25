@@ -1,0 +1,13 @@
+<div class="page-padding">
+  <h3 class="context-title">{{context.title}}</h3>
+</div>
+<hr>
+<div *ngIf="context.description != ''">
+  <h4 class="context-description">{{context.description}}</h4>
+</div>
+
+<div class="context-data">
+  The link address:
+  <ion-icon name="link"></ion-icon>
+  <a href="{{context.remoteUrl}}">{{context.remoteUrl}}</a>
+</div>
