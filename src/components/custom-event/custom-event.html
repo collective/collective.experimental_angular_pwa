@@ -2,10 +2,17 @@
   <h3 class="context-title">{{context.title}}</h3>
 </div>
 <hr>
-<div *ngIf="context.description != ''">
+<div *ngIf="context.description != null">
   <h4 class="context-description">{{context.description}}</h4>
 </div>
-<div class="context-data" [innerHTML]="context.text.data"></div>
+<div *ngIf="context.text != null" class="context-data" [innerHTML]="context.text.data"></div>
+
+<ion-item-group *ngIf="context.event_url != null"> 
+  <ion-item-divider>Event Url</ion-item-divider>
+  <ion-item>
+    <a href="{{context.event_url}}">{{context.event_url}}</a>
+  </ion-item>
+</ion-item-group>
 
 <ion-item-group>
   <ion-item-divider>When</ion-item-divider>
@@ -24,12 +31,12 @@
   </ion-list>
 </ion-item-group>
 
-<ion-item-group>
+<ion-item-group *ngIf="context.contact_name || context.contact_email || context.contact_phone">
   <ion-item-divider>Contact Details</ion-item-divider>
   <ion-list>
-    <ion-item><ion-icon name="contact" item-left></ion-icon>{{context.contact_name}}</ion-item>
-    <ion-item><ion-icon name="mail" item-left></ion-icon>{{context.contact_email}}</ion-item>
-    <ion-item> <ion-icon name="call" item-left></ion-icon>{{context.contact_phone}}</ion-item>
+    <ion-item *ngIf="context.contact_name"><ion-icon name="contact" item-left></ion-icon>{{context.contact_name}}</ion-item>
+    <ion-item *ngIf="context.contact_email"><ion-icon name="mail" item-left></ion-icon>{{context.contact_email}}</ion-item>
+    <ion-item *ngIf="context.contact_phone"> <ion-icon name="call" item-left></ion-icon>{{context.contact_phone}}</ion-item>
   </ion-list>
 </ion-item-group>
 
