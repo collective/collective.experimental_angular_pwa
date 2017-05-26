@@ -1,5 +1,5 @@
 <div class="page-padding">
-  <h3 class="context-title">{{context.title}}</h3>
+  <h1 class="context-title">{{context.title}}</h1>
 </div>
 <hr>
 
@@ -7,4 +7,4 @@
   <h4 class="context-description">{{context.description}}</h4>
 </div>
 
-<div class="context-data" [innerHTML]="context.text.data"></div>
+<div *ngIf="context.text != null" class="context-data" [innerHTML]="context.text.data"></div>
