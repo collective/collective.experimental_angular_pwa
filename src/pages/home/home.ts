@@ -3,7 +3,8 @@ import { NavController, PopoverController, ToastController } from 'ionic-angular
 import { Traverser, Marker } from 'angular-traversal';
 import { PloneViews } from '@plone/restapi-angular';
 import { CustomEventComponent, CustomFolderComponent, CustomPlonesiteComponent,
-         CustomDocumentComponent, CustomImageComponent, CustomLinkComponent } from '../../components/components';
+         CustomDocumentComponent, CustomImageComponent, CustomLinkComponent,
+         CustomFileComponent, CustomNewsitemComponent } from '../../components/components';
 import { PopoverPage } from '../pages';
 
 @Injectable()
@@ -20,6 +21,7 @@ export class TypeMarker extends Marker {
 export class HomePage implements OnInit {
 
   networkState:boolean = true;
+  toast;
 
   constructor(public navCtrl: NavController,
               private views: PloneViews,
@@ -33,6 +35,8 @@ export class HomePage implements OnInit {
       this.traverser.addView('view', 'Document', CustomDocumentComponent);
       this.traverser.addView('view', 'Image', CustomImageComponent);
       this.traverser.addView('view', 'Link', CustomLinkComponent);
+      this.traverser.addView('view', 'File', CustomFileComponent);
+      this.traverser.addView('view', 'News Item', CustomNewsitemComponent);
   }
 
   ngOnInit() {
@@ -41,20 +45,22 @@ export class HomePage implements OnInit {
   }
 
   checkConnectivity() {
+      
       if(navigator.onLine !== this.networkState){
         if(navigator.onLine == false) {
-            console.log("offline");
-            let toast = this.toastCtrl.create({
+            this.toast = this.toastCtrl.create({
               message: "Device is offline, please check network connection",
-              duration: 3000,
               position: "bottom"
             });
-            toast.present();
+            this.toast.present();
         } 
+        else {
+            this.toast.dismiss();
+        }
       }
       this.networkState = navigator.onLine;
       // console.log("network state", this.networkState);
-    }
+  }
 
   presentPopover(myEvent) {
     let popover = this.popoverCtrl.create(PopoverPage);
