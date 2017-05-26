@@ -11,9 +11,8 @@ import { MyApp } from './app.component';
 import { HomePage, PopoverPage, SearchPage, SettingsPage, TypeMarker } from '../pages/pages';
 import { NavigationComponent, CustomBreadcrumbsComponent, CustomEventComponent, 
          CustomFolderComponent, CustomDocumentComponent , CustomPlonesiteComponent,
-         CustomImageComponent, CustomLinkComponent } from '../components/components';
-
-
+         CustomImageComponent, CustomLinkComponent, CustomFileComponent, 
+         CustomNewsitemComponent } from '../components/components';
 
 const cloudSettings: CloudSettings = {
   'core': {
@@ -35,7 +34,9 @@ const cloudSettings: CloudSettings = {
     CustomDocumentComponent,
     CustomPlonesiteComponent,
     CustomImageComponent,
-    CustomLinkComponent
+    CustomLinkComponent,
+    CustomFileComponent,
+    CustomNewsitemComponent
   ],
   imports: [
     BrowserModule,
@@ -47,15 +48,17 @@ const cloudSettings: CloudSettings = {
   entryComponents: [
     MyApp,
     HomePage,
+    PopoverPage,
+    SearchPage,
+    SettingsPage,
     CustomEventComponent,
     CustomFolderComponent,
     CustomPlonesiteComponent,
     CustomDocumentComponent,
     CustomImageComponent,
     CustomLinkComponent,
-    PopoverPage,
-    SearchPage,
-    SettingsPage
+    CustomFileComponent,
+    CustomNewsitemComponent
   ],
   providers: [
     StatusBar,

@@ -1,0 +1,14 @@
+<div class="page-padding">
+  <h1 class="context-title">{{context.title}}</h1>
+</div>
+<hr>
+<div *ngIf="context.description != ''">
+  <h4 class="context-description">{{context.description}}</h4>
+</div>
+
+<div class="context-data">
+  <ion-item>
+      <ion-icon name="document" icon-left></ion-icon>
+      <a href="{{context.file.download}}">{{context.file.filename}}</a>
+  </ion-item>
+</div>

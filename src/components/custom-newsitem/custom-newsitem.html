@@ -1,0 +1,17 @@
+<div class="page-padding">
+  <h1 class="context-title">{{context.title}}</h1>
+</div>
+<hr>
+<div *ngIf="context.description != ''">
+  <h4 class="context-description">{{context.description}}</h4>
+</div>
+
+<ion-card>
+  <img *ngIf="context.image != null" src="{{context.image.download}}"/>
+  <ion-card-content>
+    <ion-card-title *ngIf="context.image_caption != null">
+      {{context.image_caption}}
+    </ion-card-title>
+    <div class="news-content" *ngIf="context.text != null" [innerHTML]="context.text.data"></div>
+  </ion-card-content>
+</ion-card>
