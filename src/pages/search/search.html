@@ -30,6 +30,10 @@
       <ion-icon *ngIf="result['@type'] == 'Event'" name="calendar" item-left></ion-icon>
       <ion-icon *ngIf="result['@type'] == 'Folder'" name="folder" item-left></ion-icon>
       <ion-icon *ngIf="result['@type'] == 'Image'" name="image" item-left></ion-icon>
+      <ion-icon *ngIf="result['@type'] == 'Link'" name="link" item-left></ion-icon>
+      <ion-icon *ngIf="result['@type'] == 'News Item'" name="megaphone" item-left></ion-icon>
+      <ion-icon *ngIf="result['@type'] == 'File'" name="attach" item-left></ion-icon>
+      <ion-icon *ngIf="result['@type'] == 'Collection'" name="filing" item-left></ion-icon>
       <a class="local-nav" [traverseTo]="result['@id']">
         <h2>{{result.title | titlecase}}</h2>
         <p>{{result['@type']}}</p>

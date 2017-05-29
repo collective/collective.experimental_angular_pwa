@@ -9,6 +9,7 @@ import { ResourceService } from '@plone/restapi-angular';
 })
 export class SearchPage {
 
+  query: string = '';
   searchResults: any[];
 
   constructor(public navCtrl: NavController, 
@@ -17,13 +18,16 @@ export class SearchPage {
   }
 
   search(queryText) {
+    console.log(queryText);
     let query = {
       "SearchableText" : queryText
     }
     this.resService.find(query, "/").subscribe( (data) => {
-      this.searchResults = data.items.filter(function(item){
-        return item['@type'] !== 'Collection';
-      });
+      // this.searchResults = data.items.filter(function(item){
+      //   return item['@type'] !== 'Collection';
+      // });
+      this.searchResults = data.items;
+      console.log(this.searchResults);
     })
   }
 
