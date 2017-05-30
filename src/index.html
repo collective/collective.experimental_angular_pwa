@@ -14,14 +14,13 @@
   <!-- cordova.js required for cordova apps -->
   <script src="cordova.js"></script>
 
-  <!-- un-comment this code to enable service worker
   <script>
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('service-worker.js')
         .then(() => console.log('service worker installed'))
         .catch(err => console.error('Error', err));
     }
-  </script>-->
+  </script>
 
   <link href="build/main.css" rel="stylesheet">
 
@@ -36,12 +35,5 @@
 
   <!-- The bundle js is generated during the build process -->
   <script src="build/main.js"></script>
-  <script>
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('service-worker.js')
-        .then(() => console.log('service worker installed'))
-        .catch(err => console.log('Error', err));
-    }
-  </script>
 </body>
 </html>
