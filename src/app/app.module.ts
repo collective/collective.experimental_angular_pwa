@@ -12,7 +12,8 @@ import { HomePage, PopoverPage, SearchPage, SettingsPage } from '../pages/pages'
 import { EventComponent, FolderComponent, DocumentComponent , 
          PlonesiteComponent, ImageComponent, LinkComponent, 
          FileComponent, NewsitemComponent } from '../views/views';
-import { NavigationComponent, BreadcrumbsComponent } from '../components/components';         
+import { NavigationComponent, BreadcrumbsComponent } from '../components/components';  
+import { OfflineService } from '../services/offline.service';       
 
 const cloudSettings: CloudSettings = {
   'core': {
@@ -63,6 +64,7 @@ const cloudSettings: CloudSettings = {
   providers: [
     StatusBar,
     SplashScreen,
+    OfflineService,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     {
       provide: 'CONFIGURATION', useValue: {
