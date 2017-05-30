@@ -7,12 +7,12 @@ import { RESTAPIModule } from '@plone/restapi-angular';
 import { CloudSettings, CloudModule } from '@ionic/cloud-angular';
 import { Marker } from 'angular-traversal';
 
-import { MyApp } from './app.component';
-import { HomePage, PopoverPage, SearchPage, SettingsPage, TypeMarker } from '../pages/pages';
-import { NavigationComponent, CustomBreadcrumbsComponent, CustomEventComponent, 
-         CustomFolderComponent, CustomDocumentComponent , CustomPlonesiteComponent,
-         CustomImageComponent, CustomLinkComponent, CustomFileComponent, 
-         CustomNewsitemComponent } from '../components/components';
+import { MyApp, TypeMarker } from './app.component';
+import { HomePage, PopoverPage, SearchPage, SettingsPage } from '../pages/pages';
+import { EventComponent, FolderComponent, DocumentComponent , 
+         PlonesiteComponent, ImageComponent, LinkComponent, 
+         FileComponent, NewsitemComponent } from '../views/views';
+import { NavigationComponent, BreadcrumbsComponent } from '../components/components';         
 
 const cloudSettings: CloudSettings = {
   'core': {
@@ -28,15 +28,15 @@ const cloudSettings: CloudSettings = {
     SearchPage,
     SettingsPage,
     NavigationComponent,
-    CustomEventComponent,
-    CustomBreadcrumbsComponent,
-    CustomFolderComponent,
-    CustomDocumentComponent,
-    CustomPlonesiteComponent,
-    CustomImageComponent,
-    CustomLinkComponent,
-    CustomFileComponent,
-    CustomNewsitemComponent
+    EventComponent,
+    BreadcrumbsComponent,
+    FolderComponent,
+    DocumentComponent,
+    PlonesiteComponent,
+    ImageComponent,
+    LinkComponent,
+    FileComponent,
+    NewsitemComponent
   ],
   imports: [
     BrowserModule,
@@ -51,14 +51,14 @@ const cloudSettings: CloudSettings = {
     PopoverPage,
     SearchPage,
     SettingsPage,
-    CustomEventComponent,
-    CustomFolderComponent,
-    CustomPlonesiteComponent,
-    CustomDocumentComponent,
-    CustomImageComponent,
-    CustomLinkComponent,
-    CustomFileComponent,
-    CustomNewsitemComponent
+    EventComponent,
+    FolderComponent,
+    PlonesiteComponent,
+    DocumentComponent,
+    ImageComponent,
+    LinkComponent,
+    FileComponent,
+    NewsitemComponent
   ],
   providers: [
     StatusBar,

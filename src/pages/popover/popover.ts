@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
-import { SearchPage} from '../pages';
+import { NavController, NavParams, ViewController } from 'ionic-angular';
+import { SearchPage } from '../pages';
 
-@IonicPage()
 @Component({
   selector: 'page-popover',
   templateUrl: 'popover.html',

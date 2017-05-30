@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
 import { Http, RequestOptions, Headers } from '@angular/http';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { ResourceService } from '@plone/restapi-angular';
 import { Observable } from 'rxjs/Rx';
 import { Storage } from '@ionic/storage';
 
-@IonicPage()
 @Component({
   selector: 'page-settings',
   templateUrl: 'settings.html',

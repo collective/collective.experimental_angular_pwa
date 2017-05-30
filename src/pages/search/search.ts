@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { ResourceService } from '@plone/restapi-angular';
 
-@IonicPage()
 @Component({
   selector: 'page-search',
   templateUrl: 'search.html',

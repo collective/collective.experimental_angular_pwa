@@ -1,18 +1,6 @@
-import { Component, OnInit, Injectable } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NavController, PopoverController, ToastController } from 'ionic-angular';
-import { Traverser, Marker } from 'angular-traversal';
-import { PloneViews } from '@plone/restapi-angular';
-import { CustomEventComponent, CustomFolderComponent, CustomPlonesiteComponent,
-         CustomDocumentComponent, CustomImageComponent, CustomLinkComponent,
-         CustomFileComponent, CustomNewsitemComponent } from '../../components/components';
 import { PopoverPage } from '../pages';
-
-@Injectable()
-export class TypeMarker extends Marker {
-  mark(context: any): string {
-    return context['@type'];  
-  }
-}
 
 @Component({
   selector: 'page-home',
@@ -24,19 +12,9 @@ export class HomePage implements OnInit {
   toast;
 
   constructor(public navCtrl: NavController,
-              private views: PloneViews,
-              private traverser: Traverser,
               private popoverCtrl: PopoverController,
               private toastCtrl: ToastController) {
-      this.views.initialize();
-      this.traverser.addView('view', 'Event', CustomEventComponent);
-      this.traverser.addView('view', 'Folder', CustomFolderComponent);
-      this.traverser.addView('view', 'Plone Site', CustomPlonesiteComponent);
-      this.traverser.addView('view', 'Document', CustomDocumentComponent);
-      this.traverser.addView('view', 'Image', CustomImageComponent);
-      this.traverser.addView('view', 'Link', CustomLinkComponent);
-      this.traverser.addView('view', 'File', CustomFileComponent);
-      this.traverser.addView('view', 'News Item', CustomNewsitemComponent);
+
   }
 
   ngOnInit() {

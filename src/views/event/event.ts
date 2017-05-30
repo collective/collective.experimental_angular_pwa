@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { ViewView } from '@plone/restapi-angular';
 
 @Component({
-  selector: 'custom-event',
-  templateUrl: 'custom-event.html'
+  selector: 'event',
+  templateUrl: 'event.html'
 })
 
-export class CustomEventComponent extends ViewView {
+export class EventComponent extends ViewView {
 
     checkDates(end, start) {
       // console.log(endDate, startDate);

@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 import { ViewView } from '@plone/restapi-angular';
 
 @Component({
-  selector: 'custom-link',
-  templateUrl: 'custom-link.html'
+  selector: 'image',
+  templateUrl: 'image.html'
 })
-export class CustomLinkComponent extends ViewView{
+export class ImageComponent extends ViewView {
 
 }
