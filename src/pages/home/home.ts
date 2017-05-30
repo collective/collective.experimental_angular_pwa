@@ -27,7 +27,7 @@ export class HomePage implements OnInit {
       if(navigator.onLine !== this.networkState){
         if(navigator.onLine == false) {
             this.toast = this.toastCtrl.create({
-              message: "Device is offline, please check network connection",
+              message: "Device is offline, but you can still use this web site",
               position: "bottom"
             });
             this.toast.present();
