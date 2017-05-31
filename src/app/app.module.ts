@@ -68,7 +68,7 @@ const cloudSettings: CloudSettings = {
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     {
       provide: 'CONFIGURATION', useValue: {
-        BACKEND_URL: 'http://localhost:8080/Plone',
+        BACKEND_URL: 'https://backend.plone.io/',
       } 
     },
     { provide: Marker, useClass: TypeMarker }
