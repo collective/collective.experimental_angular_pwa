@@ -1,10 +1,26 @@
 .bread-crumb {
-    display: inline;
-    p, .icon {
-        color: white;
-        display: inline;
+    #home-icon {
+        padding-right: 5px;
     }
     .icon {
-        font-size: 1em;
+        // color: white;
+        font-size:3rem; 
     }
+    p {
+        display: inline-block;
+        margin: 0px;
+        font-size: 2rem;
+        width: 18vw;
+    }
+    a {
+        font-size: 3rem;
+        padding: 2px 4px;
+    }
+    .slider, .fixed {
+        display: inline-block;
+        overflow-x: scroll;
+        overflow-y: hidden;
+        max-width: 78vw;
+    }
+    
 }

@@ -1,7 +1,9 @@
 <div class="bread-crumb">
-  <a traverseTo="/"><p>Home</p></a>
-  <a [traverseTo]="link.url" *ngFor="let link of links">
-    <ion-icon name="ios-arrow-forward"></ion-icon>
-    <p>{{link.title}}</p>
-  </a>
+  <a class="fixed" traverseTo="/"><ion-icon name="home" id="home-icon"></ion-icon><ion-icon name="ios-arrow-forward"></ion-icon></a>
+  <div class="slider"> 
+      <a [traverseTo]="link.url" *ngFor="let link of links">
+        <p class="truncate">{{link.title}}</p>
+        <ion-icon name="ios-arrow-forward"></ion-icon>
+      </a>
+  </div>
 </div>

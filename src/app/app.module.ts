@@ -13,7 +13,7 @@ import { EventComponent, FolderComponent, DocumentComponent ,
          PlonesiteComponent, ImageComponent, LinkComponent, 
          FileComponent, NewsitemComponent } from '../views/views';
 import { NavigationComponent, BreadcrumbsComponent } from '../components/components';  
-import { OfflineService } from '../services/offline.service';       
+import { OfflineService } from '../services/offline.service';     
 
 const cloudSettings: CloudSettings = {
   'core': {
