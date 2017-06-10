@@ -1,29 +1,13 @@
 <ion-header>
 
   <ion-navbar color="primary">
-    <ion-title>Plone</ion-title>
-  </ion-navbar>
-  <ion-toolbar color="secondary">
     <ion-title>Search Results</ion-title>
-  </ion-toolbar>
+  </ion-navbar>
 </ion-header>
 
 
 <ion-content>
-  <ion-grid>
-    <ion-row>
-      <ion-col col-9>
-        <ion-item>
-            <ion-input type="text" [(ngModel)]="query"></ion-input>
-        </ion-item>
-          
-      </ion-col>
-      <ion-col col-3>
-          <button ion-button (click)="search(query)">Search</button>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-    
+  <ion-searchbar [(ngModel)]="query" (ionInput)="search(query)"></ion-searchbar>  
   <ion-list>
     <ion-item *ngFor="let result of searchResults">
       <ion-icon *ngIf="result['@type'] == 'Document'" name="document" item-left></ion-icon>
