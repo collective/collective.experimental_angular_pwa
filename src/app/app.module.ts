@@ -6,6 +6,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { RESTAPIModule } from '@plone/restapi-angular';
 import { CloudSettings, CloudModule } from '@ionic/cloud-angular';
 import { Marker } from 'angular-traversal';
+import { LocationStrategy, PathLocationStrategy } from '@angular/common';
 
 import { MyApp, TypeMarker } from './app.component';
 import { HomePage, PopoverPage, SearchPage, SettingsPage } from '../pages/pages';
@@ -70,6 +71,10 @@ const cloudSettings: CloudSettings = {
       provide: 'CONFIGURATION', useValue: {
         BACKEND_URL: 'http://localhost:8080/Plone',
       } 
+    },
+    {
+      provide: LocationStrategy,
+      useClass: PathLocationStrategy
     },
     { provide: Marker, useClass: TypeMarker }
   ]
