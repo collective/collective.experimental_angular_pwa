@@ -7,7 +7,18 @@
 
 
 <ion-content>
-  <ion-searchbar [(ngModel)]="query" (ionInput)="search(query)"></ion-searchbar>  
+  <ion-searchbar [(ngModel)]="query" (ionInput)="search(query, false)" (keyup.enter)="search(query, true)"></ion-searchbar>  
+  <ion-item>
+    <ion-label>Sort by</ion-label>
+    <ion-select [(ngModel)]="sortBy" (ngModelChange)="search(query, false)">
+        <ion-option value="relevance">Relevance</ion-option>
+        <ion-option value="date">Date(newest first)</ion-option>
+        <ion-option value="alphabetically">Alphabetically</ion-option>
+    </ion-select>
+  </ion-item>
+  <ion-item *ngIf="noResult">
+    No results were found
+  </ion-item>
   <ion-list>
     <ion-item *ngFor="let result of searchResults">
       <ion-icon *ngIf="result['@type'] == 'Document'" name="document" item-left></ion-icon>
