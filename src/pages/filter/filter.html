@@ -1,0 +1,11 @@
+<ion-content>
+  <ion-item-group>
+    <ion-item-divider color="light">Item type</ion-item-divider>
+    <div *ngFor="let filter of filterTypes, let i = index">
+        <ion-item>
+            <ion-label>{{filter.type}}</ion-label>
+            <ion-checkbox color="primary" checked="{{filter.isSet}}" (ionChange)="updateFilter(filter, i)"></ion-checkbox>
+        </ion-item>
+    </div>
+  </ion-item-group>
+</ion-content>

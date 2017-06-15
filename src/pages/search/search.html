@@ -2,15 +2,20 @@
 
   <ion-navbar color="primary">
     <ion-title>Search Results</ion-title>
+    <ion-buttons end>
+        <button ion-button end (click)="presentFilter($event)">
+          <ion-icon name="funnel"></ion-icon>
+        </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 
 <ion-content>
-  <ion-searchbar [(ngModel)]="query" (ionInput)="search(query, false)" (keyup.enter)="search(query, true)"></ion-searchbar>  
+  <ion-searchbar [(ngModel)]="query" (ionInput)="inputChanged(false)" (keyup.enter)="inputChanged(true)"></ion-searchbar>  
   <ion-item>
     <ion-label>Sort by</ion-label>
-    <ion-select [(ngModel)]="sortBy" (ngModelChange)="search(query, false)">
+    <ion-select [(ngModel)]="sortBy" (ngModelChange)="sort()">
         <ion-option value="relevance">Relevance</ion-option>
         <ion-option value="date">Date(newest first)</ion-option>
         <ion-option value="alphabetically">Alphabetically</ion-option>

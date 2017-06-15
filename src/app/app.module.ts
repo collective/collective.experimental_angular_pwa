@@ -9,12 +9,12 @@ import { Marker } from 'angular-traversal';
 import { LocationStrategy, PathLocationStrategy } from '@angular/common';
 
 import { MyApp, TypeMarker } from './app.component';
-import { HomePage, PopoverPage, SearchPage, SettingsPage } from '../pages/pages';
+import { HomePage, PopoverPage, FilterPage, SearchPage, SettingsPage } from '../pages/pages';
 import { EventComponent, FolderComponent, DocumentComponent , 
          PlonesiteComponent, ImageComponent, LinkComponent, 
          FileComponent, NewsitemComponent } from '../views/views';
 import { NavigationComponent, BreadcrumbsComponent } from '../components/components';  
-import { OfflineService } from '../services/offline.service';     
+import { OfflineService } from '../services/offline.service';  
 
 const cloudSettings: CloudSettings = {
   'core': {
@@ -27,6 +27,7 @@ const cloudSettings: CloudSettings = {
     MyApp,
     HomePage,
     PopoverPage,
+    FilterPage,
     SearchPage,
     SettingsPage,
     NavigationComponent,
@@ -51,6 +52,7 @@ const cloudSettings: CloudSettings = {
     MyApp,
     HomePage,
     PopoverPage,
+    FilterPage,
     SearchPage,
     SettingsPage,
     EventComponent,
@@ -69,7 +71,7 @@ const cloudSettings: CloudSettings = {
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     {
       provide: 'CONFIGURATION', useValue: {
-        BACKEND_URL: 'http://localhost:8080/Plone',
+        BACKEND_URL: 'http://plonepwa.herokuapp.com/Plone',
       } 
     },
     {
