@@ -25,7 +25,7 @@
     No results were found
   </ion-item>
   <ion-list>
-    <ion-item *ngFor="let result of searchResults">
+    <ion-item *ngFor="let result of searchResults" (click)="closeSearch()">
       <ion-icon *ngIf="result['@type'] == 'Document'" name="document" item-left></ion-icon>
       <ion-icon *ngIf="result['@type'] == 'Event'" name="calendar" item-left></ion-icon>
       <ion-icon *ngIf="result['@type'] == 'Folder'" name="folder" item-left></ion-icon>

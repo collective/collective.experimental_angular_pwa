@@ -62,7 +62,7 @@ export class SearchPage {
       else {
         this.noResult = false;
       }
-      console.log(this.searchResults);
+      // console.log(this.searchResults);
       if(this.queryChanged) {
         this.queryChanged = false;
         this.getContentTypes();
@@ -118,6 +118,10 @@ export class SearchPage {
         this.filterTypes.push(filterObj)
       }
     }
-    console.log(this.filterTypes);
+    // console.log(this.filterTypes);
+  }
+
+  closeSearch() {
+    this.navCtrl.pop();
   }
 }
