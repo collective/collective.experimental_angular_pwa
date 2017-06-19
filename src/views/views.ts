@@ -6,3 +6,4 @@ export * from './image/image';
 export * from './links/links';
 export * from './file/file';
 export * from './newsitem/newsitem';
+export * from './collection/collection';

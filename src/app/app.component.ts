@@ -6,7 +6,7 @@ import { Traverser, Marker } from 'angular-traversal';
 import { PloneViews, APIService } from '@plone/restapi-angular';
 import { EventComponent, FolderComponent, PlonesiteComponent,
          DocumentComponent, ImageComponent, LinkComponent,
-         FileComponent, NewsitemComponent } from '../views/views';
+         FileComponent, NewsitemComponent, CollectionComponent } from '../views/views';
 
 
 import { HomePage, SettingsPage } from '../pages/pages';
@@ -42,6 +42,7 @@ export class MyApp {
     this.traverser.addView('view', 'Link', LinkComponent);
     this.traverser.addView('view', 'File', FileComponent);
     this.traverser.addView('view', 'News Item', NewsitemComponent);
+    this.traverser.addView('view', 'Collection', CollectionComponent)
 
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.

@@ -12,7 +12,7 @@ import { MyApp, TypeMarker } from './app.component';
 import { HomePage, PopoverPage, FilterPage, SearchPage, SettingsPage } from '../pages/pages';
 import { EventComponent, FolderComponent, DocumentComponent , 
          PlonesiteComponent, ImageComponent, LinkComponent, 
-         FileComponent, NewsitemComponent } from '../views/views';
+         FileComponent, NewsitemComponent, CollectionComponent } from '../views/views';
 import { NavigationComponent, BreadcrumbsComponent } from '../components/components';  
 import { OfflineService } from '../services/offline.service';  
 
@@ -39,7 +39,8 @@ const cloudSettings: CloudSettings = {
     ImageComponent,
     LinkComponent,
     FileComponent,
-    NewsitemComponent
+    NewsitemComponent,
+    CollectionComponent
   ],
   imports: [
     BrowserModule,
@@ -62,7 +63,8 @@ const cloudSettings: CloudSettings = {
     ImageComponent,
     LinkComponent,
     FileComponent,
-    NewsitemComponent
+    NewsitemComponent,
+    CollectionComponent
   ],
   providers: [
     StatusBar,

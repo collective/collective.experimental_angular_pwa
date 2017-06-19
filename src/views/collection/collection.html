@@ -1,0 +1,27 @@
+<div class="page-padding">
+  <h1 class="context-title">{{context.title}}</h1>
+</div>
+<hr>
+
+<div>
+  <h4 class="context-description">{{context.description}}</h4>
+</div>
+
+<ion-item *ngIf="context.items.length == 0">There are currently no items in this folder</ion-item>
+<ion-list>
+  <a *ngFor="let item of context.items" [traverseTo]="item['@id']">
+    <button ion-item class="local-nav">
+        <ion-icon *ngIf="item['@type'] == 'Document'" name="document" item-left></ion-icon>
+        <ion-icon *ngIf="item['@type'] == 'Event'" name="calendar" item-left></ion-icon>
+        <ion-icon *ngIf="item['@type'] == 'Folder'" name="folder" item-left></ion-icon>
+        <ion-icon *ngIf="item['@type'] == 'Image'" name="image" item-left></ion-icon>
+        <ion-icon *ngIf="item['@type'] == 'Link'" name="link" item-left></ion-icon>
+        <ion-icon *ngIf="item['@type'] == 'News Item'" name="megaphone" item-left></ion-icon>
+        <ion-icon *ngIf="item['@type'] == 'File'" name="attach" item-left></ion-icon>
+        <ion-icon *ngIf="item['@type'] == 'Collection'" name="filing" item-left></ion-icon>
+        <h2 class="truncate">{{item.title | titlecase}}</h2>
+        <p>{{item['@type']}}</p>
+        <ion-avatar item-end><img src="{{item['@id']}}/@@images/image/thumb" onError="this.src='../../assets/broken.png'"></ion-avatar>
+    </button>
+  </a>
+</ion-list>
