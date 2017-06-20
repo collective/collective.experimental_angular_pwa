@@ -12,7 +12,7 @@
 
 
 <ion-content>
-  <ion-searchbar [(ngModel)]="query" (ionInput)="inputChanged(false)" (keyup.enter)="inputChanged(true)"></ion-searchbar>  
+  <ion-searchbar [(ngModel)]="query" (search)="inputChanged()"></ion-searchbar>  
   <ion-item>
     <ion-label>Sort by</ion-label>
     <ion-select [(ngModel)]="sortBy" (ngModelChange)="sort()">

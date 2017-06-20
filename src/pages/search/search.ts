@@ -10,6 +10,7 @@ import { FilterPage } from '../filter/filter';
 export class SearchPage {
 
   query: string = '';
+  currQuery: string = '';
   searchResults: any[] = [];
   sortBy: string = 'relevance';
   noResult: boolean = false;
@@ -26,13 +27,10 @@ export class SearchPage {
               private events: Events) {
   }
 
-  inputChanged(doEmptySearch) {
+  inputChanged() {
     this.queryChanged = true;
+    this.currQuery = this.query;
     this.filterTypes = [];
-    if(this.query === "" && !doEmptySearch) {
-        this.noResult = false;
-        return;
-    }
     this.search(this.query);
   }
 
@@ -93,7 +91,7 @@ export class SearchPage {
         }
       }
       this.queryObj.portal_type = filterBy;
-      this.search(this.query);
+      this.search(this.currQuery);
     })
   }
 

@@ -1,5 +1,5 @@
 import { Component, ViewChild, Injectable } from '@angular/core';
-import { Platform, Nav, LoadingController} from 'ionic-angular';
+import { Platform, Nav, LoadingController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Traverser, Marker } from 'angular-traversal';
@@ -49,10 +49,7 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
       splashScreen.hide();
-
       this.api.loading.subscribe((value) => {
-        if(!value)
-          this.apiLoadsDone++;
         this.handleLoading(value); 
       }) 
 
@@ -61,9 +58,6 @@ export class MyApp {
   }
 
   loading;
-  //currently two page loads being performed, resource and breadcrumbs
-  apiLoadsNeeded = 2;
-  apiLoadsDone = 0;
   isLoading: boolean = false;
 
   openSettings() {
@@ -72,19 +66,17 @@ export class MyApp {
 
   handleLoading(value) {
     if(value) {
-      if(this.apiLoadsDone == 0) {
-        this.loading = this.loadingCtrl.create({
-          content: "Loading..."
-        });
-        this.loading.present();
-      }
+      this.loading = this.loadingCtrl.create({
+        content: "Loading..."
+      });
+      this.loading.present();
+      this.isLoading = true;
     }
     else {
-      if(this.apiLoadsDone == this.apiLoadsNeeded) {
+      if(this.loading) {
         this.loading.dismiss();
-        //reset for next page load
-        this.apiLoadsDone = 0;
-      }    
+        this.loading = false;
+      }
     }
        
   }
