@@ -1,26 +1,72 @@
-.bread-crumb {
-    #home-icon {
-        padding-right: 5px;
-    }
-    .icon {
-        // color: white;
-        font-size:3rem; 
-    }
-    p {
-        display: inline-block;
+$crumbs-back:#F3F5FA;
+$text-color:#488aff;
+
+#crumbs {
+    display: inline-flex;
+    ul {
+        padding: 0px;
         margin: 0px;
-        font-size: 2rem;
-        width: 18vw;
-    }
-    a {
-        font-size: 3rem;
-        padding: 2px 4px;
-    }
-    .slider, .fixed {
-        display: inline-block;
-        overflow-x: scroll;
-        overflow-y: hidden;
-        max-width: 78vw;
-    }
-    
+		list-style: none;
+		display: inline-flex;
+		li {
+			display: inline;
+			a {
+                display: block;
+                float: left;
+                height: 50px;
+                background: #F3F5FA;
+                font-weight: 500;
+                text-align: center;
+                padding: 13px 8px 0 32px;
+                position: relative;
+                margin: 0 2px 0 0; 
+                width: 24vw;
+                font-size: 20px;
+                text-decoration: none;
+                color: $text-color;
+        
+                &:after {
+                    content: "";  
+                    border-top: 25px solid transparent;
+                    border-bottom: 25px solid transparent;
+                    border-left: 25px solid #F3F5FA;
+                    position: absolute; 
+                    right: -24px;
+                    top: 0;
+				    z-index: 1;
+			    }
+			    &:before {
+                    content: "";  
+                    border-top: 25px solid transparent;
+                    border-bottom: 25px solid transparent;
+                    border-left: 25px solid #fff;
+                    position: absolute; 
+                    left: 0; 
+                    top: 0;
+			    }
+		    }
+		}
+	}
 }
+
+
+#crumbs .fixed li:first-child a:before {
+    display: none; 
+}
+
+#crumbs .fixed li:first-child a {
+    width: 15vw;
+    padding-left: 24px;
+}
+	
+.crumb {
+    margin: 0px;
+    overflow: hidden;
+    white-space: nowrap;
+}              
+
+.slider {
+    overflow-x: scroll;
+    width: 85vw;
+}
+
