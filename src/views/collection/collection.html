@@ -8,7 +8,7 @@
 </div>
 
 <ion-item *ngIf="context.items.length == 0">There are currently no items in this folder</ion-item>
-<ion-list>
+<ion-list no-lines>
   <a *ngFor="let item of context.items" [traverseTo]="item['@id']">
     <button ion-item class="local-nav">
         <ion-icon *ngIf="item['@type'] == 'Document'" name="document" item-left></ion-icon>

@@ -1,7 +1,23 @@
-<ion-list>
-    <a traverseTo="/"><button ion-item menuToggle>Home</button></a>
+<ion-list no-lines class="nav-links">
+    <a traverseTo="/">
+      <button ion-item menuToggle>
+        <ion-icon name="home" item-left></ion-icon>
+        <h2>Home</h2>
+      </button>
+    </a>
     <a *ngFor="let link of links" [traverseTo]="link.properties['@id']">
-      <button ion-item menuToggle class="truncate">{{ link.properties.title }}</button>
+      <button ion-item menuToggle class="truncate">
+        <ion-icon *ngIf="link.properties['@type'] == 'Document'" name="document" item-left></ion-icon>
+        <ion-icon *ngIf="link.properties['@type'] == 'Event'" name="calendar" item-left></ion-icon>
+        <ion-icon *ngIf="link.properties['@type'] == 'Folder'" name="folder" item-left></ion-icon>
+        <ion-icon *ngIf="link.properties['@type'] == 'Image'" name="image" item-left></ion-icon>
+        <ion-icon *ngIf="link.properties['@type'] == 'Link'" name="link" item-left></ion-icon>
+        <ion-icon *ngIf="link.properties['@type'] == 'News Item'" name="megaphone" item-left></ion-icon>
+        <ion-icon *ngIf="link.properties['@type'] == 'File'" name="attach" item-left></ion-icon>
+        <ion-icon *ngIf="link.properties['@type'] == 'Collection'" name="filing" item-left></ion-icon>
+        <h2>{{ link.properties.title }}</h2>
+      </button>
     </a>
     <!--<plone-navigation-level [links]="link.children" *ngIf="link.children"></plone-navigation-level>-->
 </ion-list>
+

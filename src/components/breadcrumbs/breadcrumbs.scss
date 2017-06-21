@@ -14,7 +14,7 @@ $text-color:#488aff;
                 display: block;
                 float: left;
                 height: 50px;
-                background: #F3F5FA;
+                background: $crumbs-back;
                 font-weight: 500;
                 text-align: center;
                 padding: 13px 8px 0 32px;
@@ -24,12 +24,12 @@ $text-color:#488aff;
                 font-size: 20px;
                 text-decoration: none;
                 color: $text-color;
-        
+                box-shadow: 7px 1px 12px 1px rgba(0, 0, 0, 0.16);
                 &:after {
                     content: "";  
                     border-top: 25px solid transparent;
                     border-bottom: 25px solid transparent;
-                    border-left: 25px solid #F3F5FA;
+                    border-left: 25px solid $crumbs-back;
                     position: absolute; 
                     right: -24px;
                     top: 0;
@@ -39,7 +39,7 @@ $text-color:#488aff;
                     content: "";  
                     border-top: 25px solid transparent;
                     border-bottom: 25px solid transparent;
-                    border-left: 25px solid #fff;
+                    border-left: 25px solid #4d4d4d;
                     position: absolute; 
                     left: 0; 
                     top: 0;
@@ -55,8 +55,22 @@ $text-color:#488aff;
 }
 
 #crumbs .fixed li:first-child a {
-    width: 15vw;
+    width: 13vw;
     padding-left: 24px;
+}
+
+#crumbs .slider li a:after {
+    box-shadow: -15px -15px 9px 6px $crumbs-back;
+}
+ 
+#crumbs .slider li:last-child a {
+    color: $crumbs-back;
+    background: $text-color;
+}
+
+#crumbs .slider li:last-child a:after {
+    border-left-color: $text-color;
+    box-shadow: -15px -15px 9px 6px $text-color;
 }
 	
 .crumb {
@@ -67,6 +81,7 @@ $text-color:#488aff;
 
 .slider {
     overflow-x: scroll;
-    width: 85vw;
+    width: 87vw;
+    height: 57px;
 }
 

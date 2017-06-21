@@ -24,7 +24,7 @@
   <ion-item *ngIf="noResult">
     No results were found
   </ion-item>
-  <ion-list>
+  <ion-list no-lines>
     <ion-item *ngFor="let result of searchResults" (click)="closeSearch()">
       <ion-icon *ngIf="result['@type'] == 'Document'" name="document" item-left></ion-icon>
       <ion-icon *ngIf="result['@type'] == 'Event'" name="calendar" item-left></ion-icon>
