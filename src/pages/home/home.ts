@@ -9,7 +9,6 @@ import { PopoverPage } from '../pages';
 export class HomePage implements OnInit {
 
   networkState:boolean = true;
-  toast;
 
   constructor(public navCtrl: NavController,
               private popoverCtrl: PopoverController,
@@ -26,18 +25,15 @@ export class HomePage implements OnInit {
       
       if(navigator.onLine !== this.networkState){
         if(navigator.onLine == false) {
-            this.toast = this.toastCtrl.create({
+            let toast = this.toastCtrl.create({
               message: "Device is offline, but you can still use this web site",
-              position: "bottom"
+              position: "bottom",
+              duration: 3000
             });
-            this.toast.present();
+            toast.present();
         } 
-        else {
-            this.toast.dismiss();
-        }
       }
       this.networkState = navigator.onLine;
-      // console.log("network state", this.networkState);
   }
 
   presentPopover(myEvent) {
