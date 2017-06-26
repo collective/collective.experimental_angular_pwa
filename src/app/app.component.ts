@@ -3,13 +3,12 @@ import { Platform, Nav, LoadingController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Traverser, Marker } from 'angular-traversal';
-import { PloneViews, APIService } from '@plone/restapi-angular';
+import { PloneViews, APIService, AuthenticationService } from '@plone/restapi-angular';
 import { EventComponent, FolderComponent, PlonesiteComponent,
          DocumentComponent, ImageComponent, LinkComponent,
          FileComponent, NewsitemComponent, CollectionComponent } from '../views/views';
 
-
-import { HomePage, SettingsPage } from '../pages/pages';
+import { SettingsPage, LoginPage } from '../pages/pages';
 
 @Injectable()
 export class TypeMarker extends Marker {
@@ -23,7 +22,7 @@ export class TypeMarker extends Marker {
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
-  rootPage:any = HomePage;
+  rootPage:any = LoginPage;
 
   constructor(platform: Platform, 
               statusBar: StatusBar, 
@@ -31,6 +30,7 @@ export class MyApp {
               private views: PloneViews,
               private traverser: Traverser,
               private api: APIService,
+              private auth: AuthenticationService,
               private loadingCtrl: LoadingController) {
     
     this.views.initialize();
@@ -52,30 +52,35 @@ export class MyApp {
       this.api.loading.subscribe((value) => {
         this.handleLoading(value); 
       }) 
-
     });
 
   }
 
   loading;
-  isLoading: boolean = false;
+  // isLoading: boolean = false;
 
   openSettings() {
     this.nav.push(SettingsPage);
   }
 
+  logout() {
+    this.auth.logout();
+    this.nav.setRoot(LoginPage);
+    this.nav.popToRoot(); 
+  }
+
   handleLoading(value) {
-    if(value) {
+    if(value && !this.loading) {
       this.loading = this.loadingCtrl.create({
         content: "Loading..."
       });
       this.loading.present();
-      this.isLoading = true;
+      // this.isLoading = true;
     }
     else {
       if(this.loading) {
         this.loading.dismiss();
-        this.loading = false;
+        this.loading = null;
       }
     }
        

@@ -1,0 +1,29 @@
+<ion-content class="login">
+  <div text-center  id="plone-logo" >
+    <img src="../../assets/imgs/plone-login.png" alt="plone-logo">
+  </div>
+  <ion-grid padding>
+      <ion-row>
+          <ion-col col-12>
+              <form id="login-form" #form="ngForm" (ngSubmit)="onSubmit(form)">
+                  <ion-item>
+                    <ion-label floating>Username</ion-label>
+                    <ion-input type="text" name="login" ngModel></ion-input>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label floating>Password</ion-label>
+                    <ion-input type="text" name="password" ngModel></ion-input>
+                  </ion-item>
+                <div>
+                  <button id="submit-btn" ion-button color="primary" block>Log In</button>
+                </div>
+              </form>
+          </ion-col>
+      </ion-row>
+      <ion-row>
+          <ion-col>
+              <p id="forget-pass" text-center>Forgot your password?</p>
+          </ion-col>
+      </ion-row>
+  </ion-grid>
+</ion-content>
