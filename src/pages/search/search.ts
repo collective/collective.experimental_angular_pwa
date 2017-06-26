@@ -18,6 +18,7 @@ export class SearchPage {
   queryObj: any = {
     "SearchableText" : this.query
   };
+  options: any = {};
   filterTypes = [];
 
   constructor(public navCtrl: NavController, 
@@ -36,23 +37,23 @@ export class SearchPage {
 
   sort() {
     if(this.sortBy === 'date') {
-      this.queryObj.sort_on = "Date";
-      this.queryObj.sort_order = "reverse";
+      this.options.sort_on = "Date";
+      this.options.sort_order = "reverse";
     }
     else if(this.sortBy === 'alphabetically') {
-      this.queryObj.sort_on = "sortable_title";
-      this.queryObj.sort_order = "reverse";
+      this.options.sort_on = "sortable_title";
+      this.options.sort_order = "reverse";
     }
     else {
-      this.queryObj.sort_on = "";
-      this.queryObj.sort_order = "";
+      this.options.sort_on = "";
+      this.options.sort_order = "";
     }
     this.search(this.query);
   }
 
   search(query) {
     this.queryObj.SearchableText = query;
-    this.resService.find(this.queryObj, "/").subscribe( (data) => {
+    this.resService.find(this.queryObj, "/", this.options).subscribe( (data) => {
       this.searchResults = data.items;
       if(this.searchResults.length == 0) {
         this.noResult = true;
