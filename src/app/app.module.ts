@@ -6,10 +6,9 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { RESTAPIModule } from '@plone/restapi-angular';
 import { CloudSettings, CloudModule } from '@ionic/cloud-angular';
 import { Marker } from 'angular-traversal';
-import { LocationStrategy, PathLocationStrategy } from '@angular/common';
 
 import { MyApp, TypeMarker } from './app.component';
-import { HomePage, PopoverPage, FilterPage, SearchPage, SettingsPage } from '../pages/pages';
+import { HomePage, PopoverPage, FilterPage, SearchPage, SettingsPage, LoginPage } from '../pages/pages';
 import { EventComponent, FolderComponent, DocumentComponent , 
          PlonesiteComponent, ImageComponent, LinkComponent, 
          FileComponent, NewsitemComponent, CollectionComponent } from '../views/views';
@@ -30,6 +29,7 @@ const cloudSettings: CloudSettings = {
     FilterPage,
     SearchPage,
     SettingsPage,
+    LoginPage,
     NavigationComponent,
     EventComponent,
     BreadcrumbsComponent,
@@ -56,6 +56,7 @@ const cloudSettings: CloudSettings = {
     FilterPage,
     SearchPage,
     SettingsPage,
+    LoginPage,
     EventComponent,
     FolderComponent,
     PlonesiteComponent,
@@ -75,10 +76,6 @@ const cloudSettings: CloudSettings = {
       provide: 'CONFIGURATION', useValue: {
         BACKEND_URL: 'http://plonepwa.herokuapp.com/Plone',
       } 
-    },
-    {
-      provide: LocationStrategy,
-      useClass: PathLocationStrategy
     },
     { provide: Marker, useClass: TypeMarker }
   ]
