@@ -29,7 +29,9 @@ export class LoginPage extends LoginView {
   onSubmit(form) {
     let data = form.value;
     this.auth.login(data.login, data.password);
-    form.reset();
+    setTimeout(() => {
+      form.reset();
+    }, 500);
   }
 
   goToHome() {
