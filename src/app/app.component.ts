@@ -1,14 +1,13 @@
 import { Component, ViewChild, Injectable } from '@angular/core';
-import { Platform, Nav, LoadingController } from 'ionic-angular';
+import { Platform, Nav, LoadingController, ToastController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Traverser, Marker } from 'angular-traversal';
-import { PloneViews, APIService, AuthenticationService } from '@plone/restapi-angular';
+import { PloneViews, APIService } from '@plone/restapi-angular';
 import { EventComponent, FolderComponent, PlonesiteComponent,
          DocumentComponent, ImageComponent, LinkComponent,
          FileComponent, NewsitemComponent, CollectionComponent } from '../views/views';
-
-import { SettingsPage, LoginPage } from '../pages/pages';
+import { LoginPage } from '../pages/pages';
 
 @Injectable()
 export class TypeMarker extends Marker {
@@ -30,8 +29,8 @@ export class MyApp {
               private views: PloneViews,
               private traverser: Traverser,
               private api: APIService,
-              private auth: AuthenticationService,
-              private loadingCtrl: LoadingController) {
+              private loadingCtrl: LoadingController,
+              private toastCtrl: ToastController) {
     
     this.views.initialize();
     this.traverser.addView('view', 'Event', EventComponent);
@@ -49,25 +48,18 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
       splashScreen.hide();
-      this.api.loading.subscribe((value) => {
-        this.handleLoading(value); 
-      }) 
+      this.api.status.subscribe((statusObj) => {
+        if(statusObj.hasOwnProperty('error')) {
+          console.log(statusObj);
+          this.handleLoading('error');
+        }
+        this.handleLoading(statusObj.loading);
+      })
     });
 
   }
 
   loading;
-  // isLoading: boolean = false;
-
-  openSettings() {
-    this.nav.push(SettingsPage);
-  }
-
-  logout() {
-    this.auth.logout();
-    this.nav.setRoot(LoginPage);
-    this.nav.popToRoot(); 
-  }
 
   handleLoading(value) {
     if(value && !this.loading) {
@@ -75,15 +67,25 @@ export class MyApp {
         content: "Loading..."
       });
       this.loading.present();
-      // this.isLoading = true;
     }
-    else {
-      if(this.loading) {
-        this.loading.dismiss();
-        this.loading = null;
-      }
+    else if(!value && this.loading) {
+      this.loading.dismiss();
+      this.loading = null;
     }
-       
+    else if(value === 'error' && this.loading) {
+      this.loading.dismiss();
+      this.loading = null;
+      this.showErrorMsg();
+    }   
+  }
+
+  showErrorMsg() {
+    let toast = this.toastCtrl.create({
+      message: "Something went wrong, try again",
+      position: "bottom",
+      duration: 3000
+    });
+    toast.present();
   }
 }
 

@@ -1,8 +1,16 @@
 <ion-content>
-  <!--<ion-list>-->
-      <ion-item (click)="search()">
+  <ion-list inset no-lines>
+      <ion-item (click)="search()" id="search">
           <ion-icon name="search" item-left></ion-icon>
           <h2>Search</h2>
       </ion-item>
-  <!--</ion-list>-->
+      <ion-item (click)="openSettings()">
+          <ion-icon name="settings" item-left></ion-icon>
+          <h2>Settings</h2>
+      </ion-item>
+      <ion-item (click)="logout()">
+          <ion-icon name="power" item-left></ion-icon>
+          <h2>Logout</h2>
+      </ion-item>
+  </ion-list>
 </ion-content>
