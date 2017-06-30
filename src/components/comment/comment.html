@@ -1,0 +1,10 @@
+<ion-card>
+  <ion-item>
+    <!-- insert avatar here -->
+    <h2>{{comment.author_name}}</h2>
+    <p item-right>{{comment.creation_date | date}}</p>
+  </ion-item>
+  <ion-card-content>
+    <p [innerHTML]="formatText(comment.text)"></p>
+  </ion-card-content>
+</ion-card>

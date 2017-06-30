@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController, PopoverController, ToastController } from 'ionic-angular';
-import { PopoverPage } from '../pages';
+import { NavController, PopoverController, ToastController, 
+         ActionSheetController, Platform, ModalController } from 'ionic-angular';
+import { PopoverPage, CommentsPage } from '../pages';
 
 @Component({
   selector: 'page-home',
@@ -12,7 +13,10 @@ export class HomePage implements OnInit {
 
   constructor(public navCtrl: NavController,
               private popoverCtrl: PopoverController,
-              private toastCtrl: ToastController) {
+              private toastCtrl: ToastController,
+              private actionSheetCtrl: ActionSheetController,
+              private modalCtrl: ModalController,
+              private platform: Platform) {
 
   }
 
@@ -41,6 +45,46 @@ export class HomePage implements OnInit {
     popover.present({
       ev: myEvent
     });
+  }
+
+  showActionSheet() {
+    let actionSheet = this.actionSheetCtrl.create({
+      title: 'Actions',
+      cssClass: 'action-sheets-page',
+      buttons: [
+        {
+          text: 'Comments',
+          icon: !this.platform.is('ios') ? 'chatbubbles' : null,
+          cssClass: 'message-icon',
+          handler: () => {
+            console.log('handle messages');
+            this.openCommentsModal();
+          }
+        },
+        {
+          text: 'Edit',
+          icon: !this.platform.is('ios') ? 'create' : null,
+          cssClass: 'edit-icon',
+          handler: () => {
+            console.log('handle edit');
+          }
+        },
+        {
+         text: 'Cancel',
+         role: 'cancel',
+         icon: !this.platform.is('ios') ? 'close' : null,
+         handler: () => {
+           console.log('Cancel clicked');
+         }
+       }
+      ]
+    });
+    actionSheet.present();
+  }
+
+  openCommentsModal() {
+    let modal = this.modalCtrl.create(CommentsPage);
+    modal.present();
   }
 
 }

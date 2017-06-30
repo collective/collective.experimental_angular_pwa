@@ -1,0 +1,20 @@
+<form #f="ngForm" (submit)="add(f)">
+    <ion-toolbar color="primary">
+      <ion-title>Add Comment</ion-title>
+      <ion-buttons end>
+        <button ion-button end type="submit">
+          <ion-icon name="send"></ion-icon>
+        </button>
+      </ion-buttons>
+    </ion-toolbar>
+    <ion-item *ngIf="error">{{error}}</ion-item>
+    <ion-item>
+      <ion-label floating>Email</ion-label>
+      <ion-input type="email" name="author_email" ngModel></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Comment</ion-label>
+      <ion-input type="text" name="text" ngModel></ion-input>
+    </ion-item>
+    <!--<button type="submit" ion-button block>Comment</button>-->
+</form>

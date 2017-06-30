@@ -8,12 +8,14 @@ import { CloudSettings, CloudModule } from '@ionic/cloud-angular';
 import { Marker } from 'angular-traversal';
 
 import { MyApp, TypeMarker } from './app.component';
-import { HomePage, PopoverPage, FilterPage, SearchPage, SettingsPage, LoginPage } from '../pages/pages';
+import { HomePage, PopoverPage, FilterPage, SearchPage, 
+         SettingsPage, LoginPage, CommentsPage } from '../pages/pages';
 import { EventComponent, FolderComponent, DocumentComponent , 
          PlonesiteComponent, ImageComponent, LinkComponent, 
          FileComponent, NewsitemComponent, CollectionComponent } from '../views/views';
-import { NavigationComponent, BreadcrumbsComponent } from '../components/components';  
-import { OfflineService } from '../services/offline.service';  
+import { NavigationComponent, BreadcrumbsComponent, CommentsComponent,
+         CommentComponent, CommentAddComponent } from '../components/components';  
+import { OfflineService } from '../services/offline.service';
 
 const cloudSettings: CloudSettings = {
   'core': {
@@ -30,6 +32,7 @@ const cloudSettings: CloudSettings = {
     SearchPage,
     SettingsPage,
     LoginPage,
+    CommentsPage,
     NavigationComponent,
     EventComponent,
     BreadcrumbsComponent,
@@ -40,7 +43,10 @@ const cloudSettings: CloudSettings = {
     LinkComponent,
     FileComponent,
     NewsitemComponent,
-    CollectionComponent
+    CollectionComponent,
+    CommentsComponent,
+    CommentComponent,
+    CommentAddComponent
   ],
   imports: [
     BrowserModule,
@@ -57,6 +63,7 @@ const cloudSettings: CloudSettings = {
     SearchPage,
     SettingsPage,
     LoginPage,
+    CommentsPage,
     EventComponent,
     FolderComponent,
     PlonesiteComponent,

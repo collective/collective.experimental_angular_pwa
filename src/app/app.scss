@@ -51,3 +51,11 @@ a {
 .content-md, .content-ios, .content-wp {
     color: #4d4d4d !important;
 }
+
+ion-fab[bottom] {
+    bottom: 20px;
+}
+
+ion-fab[right] {
+    right: 20px;
+}
