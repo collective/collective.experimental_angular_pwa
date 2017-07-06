@@ -1,43 +1,21 @@
-import { Component, OnInit } from '@angular/core';
-import { NavController, PopoverController, ToastController, 
-         ActionSheetController, Platform, ModalController } from 'ionic-angular';
+import { Component } from '@angular/core';
+import { NavController, PopoverController, ActionSheetController, 
+         Platform, ModalController } from 'ionic-angular';
 import { PopoverPage, CommentsPage } from '../pages';
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
-export class HomePage implements OnInit {
+export class HomePage {
 
   networkState:boolean = true;
 
   constructor(public navCtrl: NavController,
               private popoverCtrl: PopoverController,
-              private toastCtrl: ToastController,
               private actionSheetCtrl: ActionSheetController,
               private modalCtrl: ModalController,
               private platform: Platform) {
-
-  }
-
-  ngOnInit() {
-      console.log("check connection");
-      setInterval(() => {this.checkConnectivity()}, 1000);
-  }
-
-  checkConnectivity() {
-      
-      if(navigator.onLine !== this.networkState){
-        if(navigator.onLine == false) {
-            let toast = this.toastCtrl.create({
-              message: "Device is offline, but you can still use this web site",
-              position: "bottom",
-              duration: 3000
-            });
-            toast.present();
-        } 
-      }
-      this.networkState = navigator.onLine;
   }
 
   presentPopover(myEvent) {
@@ -85,6 +63,16 @@ export class HomePage implements OnInit {
   openCommentsModal() {
     let modal = this.modalCtrl.create(CommentsPage);
     modal.present();
+    modal.onDidDismiss((reload) => {
+      console.log(reload);
+      if(reload === 'true') {
+        console.log("opened again");
+        this.openCommentsModal();
+      }
+      else {
+        console.log('dont reload');
+      }
+    })
   }
 
 }

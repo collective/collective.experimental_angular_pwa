@@ -6,6 +6,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { RESTAPIModule } from '@plone/restapi-angular';
 import { CloudSettings, CloudModule } from '@ionic/cloud-angular';
 import { Marker } from 'angular-traversal';
+import { HttpModule } from '@angular/http';
 
 import { MyApp, TypeMarker } from './app.component';
 import { HomePage, PopoverPage, FilterPage, SearchPage, 
@@ -51,6 +52,7 @@ const cloudSettings: CloudSettings = {
   imports: [
     BrowserModule,
     RESTAPIModule,
+    HttpModule,
     IonicModule.forRoot(MyApp),
     CloudModule.forRoot(cloudSettings)
   ],

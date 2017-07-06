@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, ViewController } from 'ionic-angular';
+import { NavController, ViewController, Events } from 'ionic-angular';
 
 @Component({
   selector: 'page-comments',
@@ -7,11 +7,20 @@ import { NavController, ViewController } from 'ionic-angular';
 })
 export class CommentsPage {
 
-  constructor(public navCtrl: NavController, private viewCtrl: ViewController) {
+  constructor(public navCtrl: NavController, 
+              private viewCtrl: ViewController,
+              private events: Events) {
+    // window.addEventListener('online', () => {
+    //   this.viewCtrl.dismiss(true);
+    // })
+    this.events.subscribe('online', () => {
+      console.log('got event');
+      this.viewCtrl.dismiss('true');
+    })
   }
 
   dismiss() {
-    this.viewCtrl.dismiss();
+    this.viewCtrl.dismiss('false');
   }
 
 }

@@ -1,5 +1,5 @@
 import { Component, ViewChild, Injectable } from '@angular/core';
-import { Platform, Nav, LoadingController, ToastController } from 'ionic-angular';
+import { Platform, Nav, LoadingController, ToastController, Events } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Traverser, Marker } from 'angular-traversal';
@@ -8,6 +8,7 @@ import { EventComponent, FolderComponent, PlonesiteComponent,
          DocumentComponent, ImageComponent, LinkComponent,
          FileComponent, NewsitemComponent, CollectionComponent } from '../views/views';
 import { LoginPage } from '../pages/pages';
+import { OfflineService } from '../services/offline.service';
 
 @Injectable()
 export class TypeMarker extends Marker {
@@ -30,7 +31,9 @@ export class MyApp {
               private traverser: Traverser,
               private api: APIService,
               private loadingCtrl: LoadingController,
-              private toastCtrl: ToastController) {
+              private toastCtrl: ToastController,
+              private offlineService: OfflineService,
+              private events: Events) {
     
     this.views.initialize();
     this.traverser.addView('view', 'Event', EventComponent);
@@ -49,13 +52,27 @@ export class MyApp {
       statusBar.styleDefault();
       splashScreen.hide();
       this.api.status.subscribe((statusObj) => {
-        if(statusObj.hasOwnProperty('error')) {
-          console.log(statusObj);
-          this.handleLoading('error');
-        }
-        this.handleLoading(statusObj.loading);
+        if(navigator.onLine) {
+            if(statusObj.hasOwnProperty('error')) {
+              console.log(statusObj);
+              this.handleLoading('error');
+            }
+            this.handleLoading(statusObj.loading);
+          }   
       })
     });
+
+    window.addEventListener('offline', () => {
+        this.events.publish('offline');
+        this.offlineService.showOfflineMsg();
+    })
+
+    //for flushing the offline queues
+    window.addEventListener('online', () => {
+        this.events.publish('online');
+        console.log('published event');
+        this.offlineService.flushQueue();
+    })
 
   }
 

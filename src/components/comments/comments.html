@@ -1,11 +1,15 @@
 <ion-content>
-  <ion-list *ngFor="let comment of comments">
-    <comment [comment]="comment"></comment> 
-  </ion-list> 
+  <ion-list>
+    <comment *ngFor="let comment of comments" [comment]="comment"></comment> 
+  </ion-list>
+  <div ion-button full color="danger" *ngIf="offlineComments.length != 0">Offline</div>
+  <ion-list>
+    <comment *ngFor="let comment of offlineComments" [comment]="comment"></comment> 
+  </ion-list>   
 </ion-content>
    
 <ion-footer>
   <ion-toolbar style="padding: 0px">
-      <comment-add [path]="contextPath" (onCreate)="loadComments()"></comment-add> 
+      <comment-add [path]="contextPath" (onCreate)="loadComments()" (offlineData)="offlineComment($event)"></comment-add> 
   </ion-toolbar>
 </ion-footer>
