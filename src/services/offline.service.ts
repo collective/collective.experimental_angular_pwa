@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Http, RequestOptions, Headers } from '@angular/http';
-import { ResourceService } from '@plone/restapi-angular';
+import { ResourceService, AuthenticationService, APIService } from '@plone/restapi-angular';
 import { Observable } from 'rxjs/Rx';
-import { ToastController } from 'ionic-angular';
+import { ToastController, Events } from 'ionic-angular';
 
 @Injectable()
 export class OfflineService {
@@ -11,7 +11,9 @@ export class OfflineService {
 
     constructor(private resService: ResourceService, 
                 private http: Http,
-                private toastCtrl: ToastController ) {
+                private toastCtrl: ToastController,
+                private auth: AuthenticationService,
+                private events: Events) {
     }   
 
    downloadOffline() { 
@@ -69,6 +71,17 @@ export class OfflineService {
     //dummy post request
     this.http.post(`${currLocation}/flush`, '').subscribe(() => {
       console.log("queue is flushed");
+    })
+  }
+
+  handleComments(data, url) {
+    let headers = this.auth.getHeaders();
+    return this.http.post(`${url}/@comments`, data, {headers: headers}).map((res) => {
+      if(res.status === 202) {
+        console.log("detected offline");
+        this.events.publish('offline:comment', data);
+      }
+      return res;
     })
   }
 }
