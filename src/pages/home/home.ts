@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, PopoverController, ActionSheetController, 
          Platform, ModalController } from 'ionic-angular';
 import { PopoverPage, CommentsPage } from '../pages';
+import { Traverser } from 'angular-traversal';
 
 @Component({
   selector: 'page-home',
@@ -15,7 +16,8 @@ export class HomePage {
               private popoverCtrl: PopoverController,
               private actionSheetCtrl: ActionSheetController,
               private modalCtrl: ModalController,
-              private platform: Platform) {
+              private platform: Platform,
+              private traverser: Traverser) {
   }
 
   presentPopover(myEvent) {
@@ -45,6 +47,7 @@ export class HomePage {
           cssClass: 'edit-icon',
           handler: () => {
             console.log('handle edit');
+            this.openEditView();
           }
         },
         {
@@ -73,6 +76,14 @@ export class HomePage {
         console.log('dont reload');
       }
     })
+  }
+
+  openEditView() {
+    let currUrl = document.location.href;
+    let currUrlArray = currUrl.split("/");
+    let redirectUrl = `/${currUrlArray[currUrlArray.length - 1]}/@@edit`;
+    console.log(redirectUrl);
+    this.traverser.traverse(redirectUrl);
   }
 
 }
