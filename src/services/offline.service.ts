@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, RequestOptions, Headers } from '@angular/http';
-import { ResourceService, AuthenticationService, APIService } from '@plone/restapi-angular';
+import { ResourceService, AuthenticationService } from '@plone/restapi-angular';
 import { Observable } from 'rxjs/Rx';
 import { ToastController, Events } from 'ionic-angular';
 
