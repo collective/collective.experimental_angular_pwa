@@ -39,7 +39,7 @@ $text-color:#488aff;
                     content: "";  
                     border-top: 25px solid transparent;
                     border-bottom: 25px solid transparent;
-                    border-left: 25px solid #4d4d4d;
+                    border-left: 25px solid darken($text-color, 10%);
                     position: absolute; 
                     left: 0; 
                     top: 0;
