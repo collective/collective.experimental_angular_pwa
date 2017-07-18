@@ -1,5 +1,4 @@
-$crumbs-back:#F3F5FA;
-$text-color:#488aff;
+@import '../../theme/variables.scss';
 
 #crumbs {
     display: inline-flex;
@@ -14,7 +13,7 @@ $text-color:#488aff;
                 display: block;
                 float: left;
                 height: 50px;
-                background: $crumbs-back;
+                background: $crumbs-background;
                 font-weight: 500;
                 text-align: center;
                 padding: 13px 8px 0 32px;
@@ -23,13 +22,13 @@ $text-color:#488aff;
                 width: 24vw;
                 font-size: 20px;
                 text-decoration: none;
-                color: $text-color;
+                color: $crumbs-text-color;
                 box-shadow: 7px 1px 12px 1px rgba(0, 0, 0, 0.16);
                 &:after {
                     content: "";  
                     border-top: 25px solid transparent;
                     border-bottom: 25px solid transparent;
-                    border-left: 25px solid $crumbs-back;
+                    border-left: 25px solid $crumbs-background;
                     position: absolute; 
                     right: -24px;
                     top: 0;
@@ -39,7 +38,7 @@ $text-color:#488aff;
                     content: "";  
                     border-top: 25px solid transparent;
                     border-bottom: 25px solid transparent;
-                    border-left: 25px solid darken($text-color, 10%);
+                    border-left: 25px solid darken($crumbs-text-color, 10%);
                     position: absolute; 
                     left: 0; 
                     top: 0;
@@ -60,17 +59,17 @@ $text-color:#488aff;
 }
 
 #crumbs .slider li a:after {
-    box-shadow: -15px -15px 9px 6px $crumbs-back;
+    box-shadow: -15px -15px 9px 6px $crumbs-background;
 }
  
 #crumbs .slider li:last-child a {
-    color: $crumbs-back;
-    background: $text-color;
+    color: $crumbs-background;
+    background: $crumbs-text-color;
 }
 
 #crumbs .slider li:last-child a:after {
-    border-left-color: $text-color;
-    box-shadow: -15px -15px 9px 6px $text-color;
+    border-left-color: $crumbs-text-color;
+    box-shadow: -15px -15px 9px 6px $crumbs-text-color;
 }
 	
 .crumb {
