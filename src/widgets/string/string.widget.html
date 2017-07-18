@@ -1,0 +1,5 @@
+<p *ngIf="schema.description" class="formHelp" class="schema-description">{{schema.description}}</p>
+<ion-item class="schema-input">
+    <ion-label [attr.for]="id">{{schema.title}}</ion-label>
+    <ion-input [attr.readonly]="schema.readOnly?true:null"  class="text-widget.id textline-widget form-control" [attr.type]="this.getInputType()" [attr.id]="id"  [formControl]="control" [attr.placeholder]="schema.placeholder" [attr.disabled]="(schema.readOnly)?true:null"></ion-input>
+</ion-item> 

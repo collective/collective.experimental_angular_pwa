@@ -1,0 +1,5 @@
+<p *ngIf="schema.description" class="formHelp" class="schema-description">{{schema.description}}</p>
+<ion-item class="schema-input">
+  <ion-label [attr.for]="id">{{schema.title}}</ion-label>
+  <ion-checkbox [formControl]="control" [attr.name]="name" type="checkbox" [attr.disabled]="schema.readOnly"></ion-checkbox>
+</ion-item>

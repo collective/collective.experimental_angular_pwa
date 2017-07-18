@@ -17,6 +17,10 @@ import { EventComponent, FolderComponent, DocumentComponent ,
 import { NavigationComponent, BreadcrumbsComponent, CommentsComponent,
          CommentComponent, CommentAddComponent } from '../components/components';  
 import { OfflineService } from '../services/offline.service';
+import { IonicRegistry } from '../widgets/registry';
+import { IonicStringWidget, IonicTextAreaWidget, IonicCheckboxWidget } from '../widgets/widgets';
+import { WidgetRegistry } from 'angular2-schema-form';
+import { ReactiveFormsModule } from '@angular/forms';
 
 const cloudSettings: CloudSettings = {
   'core': {
@@ -47,12 +51,16 @@ const cloudSettings: CloudSettings = {
     CollectionComponent,
     CommentsComponent,
     CommentComponent,
-    CommentAddComponent
+    CommentAddComponent,
+    IonicStringWidget,
+    IonicTextAreaWidget,
+    IonicCheckboxWidget
   ],
   imports: [
     BrowserModule,
     RESTAPIModule,
     HttpModule,
+    ReactiveFormsModule,
     IonicModule.forRoot(MyApp),
     CloudModule.forRoot(cloudSettings)
   ],
@@ -74,7 +82,10 @@ const cloudSettings: CloudSettings = {
     LinkComponent,
     FileComponent,
     NewsitemComponent,
-    CollectionComponent
+    CollectionComponent,
+    IonicStringWidget,
+    IonicTextAreaWidget,
+    IonicCheckboxWidget
   ],
   providers: [
     StatusBar,
@@ -86,7 +97,8 @@ const cloudSettings: CloudSettings = {
         BACKEND_URL: 'http://plonepwa.herokuapp.com/Plone',
       } 
     },
-    { provide: Marker, useClass: TypeMarker }
+    { provide: Marker, useClass: TypeMarker },
+    { provide: WidgetRegistry, useClass: IonicRegistry }
   ]
 })
 export class AppModule {}
