@@ -18,7 +18,7 @@ import { NavigationComponent, BreadcrumbsComponent, CommentsComponent,
          CommentComponent, CommentAddComponent } from '../components/components';  
 import { OfflineService } from '../services/offline.service';
 import { IonicRegistry } from '../widgets/registry';
-import { IonicStringWidget, IonicTextAreaWidget, IonicCheckboxWidget } from '../widgets/widgets';
+import { IonicStringWidget, IonicTextAreaWidget, IonicCheckboxWidget, IonicDatetimeWidget } from '../widgets/widgets';
 import { WidgetRegistry } from 'angular2-schema-form';
 import { ReactiveFormsModule } from '@angular/forms';
 
@@ -54,7 +54,8 @@ const cloudSettings: CloudSettings = {
     CommentAddComponent,
     IonicStringWidget,
     IonicTextAreaWidget,
-    IonicCheckboxWidget
+    IonicCheckboxWidget,
+    IonicDatetimeWidget
   ],
   imports: [
     BrowserModule,
@@ -85,7 +86,8 @@ const cloudSettings: CloudSettings = {
     CollectionComponent,
     IonicStringWidget,
     IonicTextAreaWidget,
-    IonicCheckboxWidget
+    IonicCheckboxWidget,
+    IonicDatetimeWidget
   ],
   providers: [
     StatusBar,

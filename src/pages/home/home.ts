@@ -81,9 +81,9 @@ export class HomePage {
   openEditView() {
     let currUrl = document.location.href;
     let currUrlArray = currUrl.split("/");
-    let redirectUrl = `/${currUrlArray[currUrlArray.length - 1]}/@@edit`;
+    let redirectUrl = (currUrlArray.slice(4)).join("/");
     console.log(redirectUrl);
-    this.traverser.traverse(redirectUrl);
+    this.traverser.traverse(`/${redirectUrl}/@@edit`);
   }
 
 }

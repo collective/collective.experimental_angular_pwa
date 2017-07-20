@@ -1,0 +1,5 @@
+<p *ngIf="schema.description" class="formHelp" class="schema-description">{{schema.description}}</p>
+<ion-item class="schema-input">
+    <ion-label [attr.for]="id">{{schema.title}}</ion-label>
+    <ion-datetime displayFormat="DD/MM/YYYY" pickerFormat="DD MM YYYY" [attr.readonly]="schema.readOnly?true:null"  class="form-control" [attr.type]="date" [attr.id]="id"  [formControl]="control" [attr.placeholder]="schema.placeholder" [attr.disabled]="(schema.readOnly)?true:null"></ion-datetime>
+</ion-item> 
