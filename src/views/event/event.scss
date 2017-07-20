@@ -1,14 +1,15 @@
+@import '../../theme/variables.scss';
 
 .local-nav {
     text-decoration: none;
     h2 {
         font-weight: 600;
-        color: #488aff;
+        color: $local-nav-heading;
     }
 }
 
 .item-icon {
-    color: #488aff;
+    color: $item-icon-color;
 }
 
 ion-item-divider {

@@ -1,3 +1,5 @@
+@import '../../theme/variables.scss';
+
 .icon-more {
     font-size: 2rem;
 }
@@ -7,15 +9,15 @@
 }
 
 .edit-icon ion-icon {
-    color: #31D55F !important;
+    color: $edit-icon-color !important;
 }
 
 .message-icon ion-icon {
-    color: #488aff !important;
+    color: $message-icon-color !important;
 }
 
 .action-sheet-cancel ion-icon, .action-sheet-destructive ion-icon {
-    color: #757575;
+    color: $action-color;
     font-weight: 600;
 }
 

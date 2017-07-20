@@ -1,6 +1,8 @@
+@import '../../theme/variables.scss';
+
 #plone-logo{
     padding-top: 25vh;
-    background-color: #488aff;
+    background-color: $logo-background-color;
     height: 45vh;
 }
 
@@ -15,7 +17,7 @@
 } 
 
 #forget-pass {
-    color: #a9a9a9 !important;
+    color: $forget-password-color !important;
     font-size: 1.3em;
     font-weight: 500;
 }
