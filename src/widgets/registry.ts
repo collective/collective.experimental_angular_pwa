@@ -1,5 +1,6 @@
 import { DefaultWidgetRegistry } from 'angular2-schema-form';
-import { IonicStringWidget, IonicTextAreaWidget, IonicCheckboxWidget, IonicDatetimeWidget } from './widgets';
+import { IonicStringWidget, IonicTextAreaWidget, IonicCheckboxWidget, 
+         IonicDatetimeWidget, MediumWidget } from './widgets';
 
 export class IonicRegistry extends DefaultWidgetRegistry {
     constructor() {
@@ -9,6 +10,6 @@ export class IonicRegistry extends DefaultWidgetRegistry {
         this.register('boolean', IonicCheckboxWidget);
         this.register('checkbox', IonicCheckboxWidget);
         this.register('date', IonicDatetimeWidget);
-        this.setDefaultWidget(IonicStringWidget);
+        this.register('tinymce', MediumWidget);
     }
 }

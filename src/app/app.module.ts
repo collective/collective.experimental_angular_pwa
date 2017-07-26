@@ -18,9 +18,10 @@ import { NavigationComponent, BreadcrumbsComponent, CommentsComponent,
          CommentComponent, CommentAddComponent } from '../components/components';  
 import { OfflineService } from '../services/offline.service';
 import { IonicRegistry } from '../widgets/registry';
-import { IonicStringWidget, IonicTextAreaWidget, IonicCheckboxWidget, IonicDatetimeWidget } from '../widgets/widgets';
-import { WidgetRegistry } from 'angular2-schema-form';
+import { IonicStringWidget, IonicTextAreaWidget, IonicCheckboxWidget, IonicDatetimeWidget, MediumWidget } from '../widgets/widgets';
+import { WidgetRegistry, SchemaFormModule } from 'angular2-schema-form';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MediumEditorComponent } from '../widgets/medium';
 
 const cloudSettings: CloudSettings = {
   'core': {
@@ -55,13 +56,16 @@ const cloudSettings: CloudSettings = {
     IonicStringWidget,
     IonicTextAreaWidget,
     IonicCheckboxWidget,
-    IonicDatetimeWidget
+    IonicDatetimeWidget,
+    MediumWidget,
+    MediumEditorComponent
   ],
   imports: [
     BrowserModule,
     RESTAPIModule,
     HttpModule,
     ReactiveFormsModule,
+    SchemaFormModule,
     IonicModule.forRoot(MyApp),
     CloudModule.forRoot(cloudSettings)
   ],
@@ -87,7 +91,8 @@ const cloudSettings: CloudSettings = {
     IonicStringWidget,
     IonicTextAreaWidget,
     IonicCheckboxWidget,
-    IonicDatetimeWidget
+    IonicDatetimeWidget,
+    MediumWidget
   ],
   providers: [
     StatusBar,
