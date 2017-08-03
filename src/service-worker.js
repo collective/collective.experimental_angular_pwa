@@ -37,6 +37,54 @@ self.toolbox.router.post(/flush$/, () => {
   return flushQueue();
 })
 
+//for handling patch requests
+self.addEventListener('fetch', event => {
+  if (event.request.method === 'PATCH') {
+    console.log(event);
+    // console.log(event.request);
+    let fakeResponse = new Response(null, {
+      status: 204
+    })
+
+    if(!navigator.onLine) {
+      console.log("No network availability, enqueing");
+      event.respondWith(
+        enqueue(event.request).then(() => {
+          event.request.clone().text().then((body) => {
+            caches.open('ionic-cache').then((cache) => {
+              body = JSON.parse(body);
+              let data = body.text;
+              body['text'] = {
+                "content-type" : "text/html",
+                "data" : data
+              };
+              body['@id'] = event.request.url;
+              body['@type'] = "Document";
+              body['layout'] = "document_view";
+              body = JSON.stringify(body);
+              let response = new Response(body, {
+                status: 200
+              });
+              cache.put(event.request.url, response).then(() => {
+                console.log("added");
+              });
+            });
+          });
+          
+          return fakeResponse.clone();
+        })
+      ) 
+    }
+    else {
+      console.log("Network available! Flushing the queue");
+      return flushQueue().then(() => {
+        return fetch(event.request);
+      })
+    }
+  }
+});
+
+//for handling post requests
 self.toolbox.router.post(/@comments$/, (req, res) => {
   console.log(req, res);
   let fakeResponse = new Response(null, {
@@ -45,25 +93,25 @@ self.toolbox.router.post(/@comments$/, (req, res) => {
   
   if(!navigator.onLine) {
     console.log("No network availability, enqueing");
-    return enqueue(req).then(function() {
+    return enqueue(req).then(() => {
       return fakeResponse.clone();
     })
   }
 
   console.log("Network available! Flushing the queue");
-  return flushQueue().then(function() {
+  return flushQueue().then(() => {
     return fetch(req);
   })
   
 }, {origin: 'http://plonepwa.herokuapp.com/Plone'});
 
 function enqueue(request) {
-  return serialize(request).then(function(serialized) {
-    localforage.getItem('queue').then(function(queue) {
+  return serialize(request).then((serialized) => {
+    localforage.getItem('queue').then((queue) => {
       queue = queue || [];
       queue.push(serialized);
 
-      return localforage.setItem('queue', queue).then(function() {
+      return localforage.setItem('queue', queue).then(() => {
         console.log(serialized.method, serialized.url, 'enqueued!');
       });
     });
@@ -71,24 +119,24 @@ function enqueue(request) {
 }
 
 function flushQueue() {
-  return localforage.getItem('queue').then(function(queue) {
+  return localforage.getItem('queue').then((queue) => {
     queue = queue || [];
     if(!queue.length) {
       return Promise.resolve();
     }
 
     console.log('Sending', queue.length, 'requests...');
-    return sendInOrder(queue).then(function() {
+    return sendInOrder(queue).then(() => {
       return localforage.setItem('queue', []);
     })
   })
 }
 
 function sendInOrder(requests) {
-  var sending = requests.reduce(function(prevPromise, serialized) {
+  var sending = requests.reduce((prevPromise, serialized) => {
     console.log("Sending", serialized.method, serialized.url);
-    return prevPromise.then(function() {
-      return deserialize(serialized).then(function(request) {
+    return prevPromise.then(() => {
+      return deserialize(serialized).then((request) => {
         return fetch(request);
       });
     });
@@ -115,7 +163,7 @@ function serialize(request) {
   };
 
   if(request.method !== 'GET' && request.method !== 'HEAD') {
-    return request.clone().text().then(function(body) {
+    return request.clone().text().then((body) => {
       serialized.body = body;
       return Promise.resolve(serialized);
     });
