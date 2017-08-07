@@ -17,7 +17,7 @@
 <ion-content>
     <breadcrumbs></breadcrumbs>
     <traverser-outlet></traverser-outlet>
-    <ion-fab right bottom (click)="showActionSheet()">
+    <ion-fab right bottom (click)="showActionSheet()" *ngIf="canEdit()">
       <button ion-fab color="primary"><ion-icon name="create"></ion-icon></button>
     </ion-fab>
 </ion-content>

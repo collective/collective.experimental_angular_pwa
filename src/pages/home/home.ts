@@ -86,4 +86,15 @@ export class HomePage {
     this.traverser.traverse(`/${redirectUrl}/@@edit`);
   }
 
+  canEdit() {
+    let currUrl = document.location.href;
+    let currUrlArray = currUrl.split("/");
+    if(currUrlArray[currUrlArray.length - 1] == "" || currUrlArray[currUrlArray.length - 1] == "@@edit") {
+      return false;
+    }
+    else {
+      return true;
+    }
+  }
+
 }
