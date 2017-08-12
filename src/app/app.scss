@@ -14,6 +14,7 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+@import '../theme/variables.scss';
 
 .truncate {
     white-space: nowrap;
@@ -93,4 +94,29 @@ ion-fab[right] {
     border-color: rgba(136, 183, 213, 0);
     border-top-color: #488aff;
     border-width: 8px;
+}
+
+sf-form-element > div > button {
+    width: 50%;
+    padding: 15px;   
+    font-size: large; 
+    font-weight: 500;
+    position: fixed;
+    bottom: 0px;
+}
+
+sf-form-element > div > button:first-of-type {
+    background-color: color($colors, primary, base);
+    color: color($colors, light, base);
+    left: 0px;
+} 
+
+sf-form-element > div > button:last-of-type {
+    background-color: color($colors, light, base);
+    color: color($colors, primary, base);
+    right: 0px;
+}   
+
+sf-form-element > div {
+    padding-bottom: 35px;
 }
