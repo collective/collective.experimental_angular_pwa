@@ -69,4 +69,5 @@ this runs the app in development mode. Open  [http://localhost:8100](http://loca
 
 * [Ionic 2](http://ionicframework.com/docs/) - Framework to create cross-platform mobile  applications
 * [Plone Restapi Angular](https://github.com/plone/plone.restapi-angular) - Package to help build Angular application based on Plone Rest Api
-* [Angular2 schema form ](https://github.com/makinacorpus/angular2-schema-form) - Angular2 module allowing you to instanciate an HTML form from a JSON schema.
+* [Angular2 schema form](https://github.com/makinacorpus/angular2-schema-form) - Angular2 module allowing you to instanciate an HTML form from a JSON schema.
+* [Angular Medium Editor](https://github.com/kitconcept/angular-medium-editor) - Angular2 component for medium editor
