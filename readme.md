@@ -50,6 +50,8 @@ An Ionic 2 app which in turn will be using Angular 2 that will implement the PWA
 
 ## Getting Started
 
+The nodejs version being used is 7.7.3.
+
 Clone the repository, in the project's root directory, run the command:
 ```
 npm install or npm i
