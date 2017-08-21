@@ -47,6 +47,9 @@ An Ionic 2 app which in turn will be using Angular 2 that will implement the PWA
 
   <img src="https://github.com/collective/collective.experimental_angular_pwa/blob/master/docs/resources/Editing/plone-actionsheet.png?raw=true" height="300"> <img src="https://github.com/collective/collective.experimental_angular_pwa/blob/master/docs/resources/Editing/plone-medium-editor.png?raw=true" height="300">
 
+## Documentation
+
+See [documentation folder](https://github.com/collective/collective.experimental_angular_pwa/tree/master/docs).
 
 ## Getting Started
 
