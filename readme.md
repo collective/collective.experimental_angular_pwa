@@ -67,6 +67,8 @@ ionic serve
 ```
 this runs the app in development mode. Open  [http://localhost:8100](http://localhost:8100) to view it in the browser.
 
+Use the credentials admin:admin to login in to the app.
+
 
 
 
