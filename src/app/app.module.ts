@@ -101,7 +101,7 @@ const cloudSettings: CloudSettings = {
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     {
       provide: 'CONFIGURATION', useValue: {
-        BACKEND_URL: 'https://angular-plone.herokuapp.com/Plone',
+        BACKEND_URL: 'http://angular-plone.herokuapp.com/Plone',
       } 
     },
     { provide: Marker, useClass: TypeMarker },
