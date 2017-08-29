@@ -69,6 +69,28 @@ this runs the app in development mode. Open  [http://localhost:8100](http://loca
 
 Use the credentials admin:admin to login in to the app.
 
+## Setting up the backend
+
+The app is by default using http://angular-plone.herokuapp.com/Plone as the backend, it is recommended you change this for your personal development and testing purposes. There are two ways you can do this, either by hosting on the plone instance on your local machine or deploying an instance on heroku. It is favourable to use the former method as heroku will have storage restrictions.
+
+1. To set up Plone + plone.restapi you can follow these steps:
+
+   ````
+   Checkout https://github.com/plone/plone.restapi
+   then set up a Python virtualenv
+   and then:
+   python bootstrap.py
+   bin/buildout -Nv -c plone-5.0.x.cfg
+   and you will get a Plone instance with restapi
+   ````
+   The plone instance will be run on http://localhost:8080/Plone, 
+   replace the default backend by this.
+
+
+2. To set up the backend on heroku, go to https://github.com/plone/heroku-button-plone, clicking on the deploy to heroku button will take you to the heroku dashboard. Select the app name and deploy the plone instance. It will run on [AppName].herokuapp.com/Plone, replace the default backend by this one.
+
+After you get the plone instance running, go to site setup -> add-ons, and enable the plone restapi add-on.
+
 
 
 
