@@ -17,11 +17,11 @@ export class OfflineService {
     }   
 
    downloadOffline() { 
-    let emptyQuery = {
-      "SearchableText"  : '',
-      "metadata_fields" : 'modified'
+    const options = {
+      metadata_fields: ['modified', ],
+      size: 1000,
     }
-    this.resService.find(emptyQuery, "/").subscribe( (data) => {
+    this.resService.find({}, '/', options).subscribe( (data) => {
       console.log(data);
       this.queryUrls = data.items
         .filter( (item) => {
