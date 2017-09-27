@@ -7,6 +7,7 @@ import { RESTAPIModule } from '@plone/restapi-angular';
 import { CloudSettings, CloudModule } from '@ionic/cloud-angular';
 import { Marker } from 'angular-traversal';
 import { HttpModule } from '@angular/http';
+import { IonicStorageModule } from '@ionic/storage';
 
 import { MyApp, TypeMarker } from './app.component';
 import { HomePage, PopoverPage, FilterPage, SearchPage, 
@@ -67,6 +68,7 @@ const cloudSettings: CloudSettings = {
     ReactiveFormsModule,
     SchemaFormModule,
     IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot(),
     CloudModule.forRoot(cloudSettings)
   ],
   bootstrap: [IonicApp],
@@ -101,7 +103,8 @@ const cloudSettings: CloudSettings = {
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     {
       provide: 'CONFIGURATION', useValue: {
-        BACKEND_URL: 'http://angular-plone.herokuapp.com/Plone',
+        BACKEND_URL: 'https://cms.terralego.com/backend-CCHA',
+        // BACKEND_URL: 'http://angular-plone.herokuapp.com/Plone',
       } 
     },
     { provide: Marker, useClass: TypeMarker },

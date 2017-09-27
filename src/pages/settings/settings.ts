@@ -12,15 +12,17 @@ export class SettingsPage {
   //number of milliseconds before querying server for refreshing cache
   refreshAfter: number = 60*60*1000;
   refreshCache;
-  storage = new Storage(localStorage);
 
-  constructor(public navCtrl: NavController, 
-              public navParams: NavParams,
-              private offlineService: OfflineService) {
-      this.storage.get("downloadOffline").then( (val) => {
-        this.readOffline = val;
-        this.toggleDownload();
-      })              
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams,
+    private storage: Storage,
+    private offlineService: OfflineService,
+  ) {
+    this.storage.get("downloadOffline").then((val) => {
+      this.readOffline = val;
+      this.toggleDownload();
+    });
   }
 
   toggleDownload() {
