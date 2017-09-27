@@ -3,49 +3,48 @@ import { Http, RequestOptions, Headers } from '@angular/http';
 import { ResourceService, AuthenticationService } from '@plone/restapi-angular';
 import { Observable } from 'rxjs/Rx';
 import { ToastController, Events } from 'ionic-angular';
+import { Storage } from '@ionic/storage';
 
 @Injectable()
 export class OfflineService {
-    queryUrls: any = [];
-    lastRefreshAt: number = 0;
 
-    constructor(private resService: ResourceService, 
-                private http: Http,
-                private toastCtrl: ToastController,
-                private auth: AuthenticationService,
-                private events: Events) {
-    }   
+  constructor(
+    private resService: ResourceService, 
+    private http: Http,
+    private toastCtrl: ToastController,
+    private auth: AuthenticationService,
+    private events: Events,
+    private storage: Storage,
+  ) { }
 
-   downloadOffline() { 
-    const options = {
-      metadata_fields: ['modified', ],
-      size: 1000,
-    }
-    this.resService.find({}, '/', options).subscribe( (data) => {
-      console.log(data);
-      this.queryUrls = data.items
-        .filter( (item) => {
-          if(this.lastRefreshAt == 0)
-            return item;
-          else {
-            return new Date(item.modified).getTime() > this.lastRefreshAt;
-          }  
-        }) 
-        .map( (item) => {
-          return item['@id']; //return only urls of all items
-        })
-      for(let url in this.queryUrls) {
-        let queryUrl = this.queryUrls[url];
-        this.cacheUrl(queryUrl).subscribe((data) => {
-          console.log(data);
-        })
-        let breadcrumbUrl = `${queryUrl}/@components/breadcrumbs`;
-        this.cacheUrl(breadcrumbUrl).subscribe((data) => {
-          console.log(data);
-        }) 
+  downloadOffline() {
+    this.storage.get('last-refresh').then(lastRefreshAt => {
+      const options = {
+        metadata_fields: ['modified', ],
+        size: 1000,
       }
-      this.lastRefreshAt = new Date().getTime();
-    })
+      this.resService.find({}, '/', options).subscribe( (data) => {
+        console.log(data);
+        const now = new Date().getTime();
+        data.items
+          .filter((item) => {
+            return !lastRefreshAt || new Date(item.modified).getTime() > lastRefreshAt;
+          })
+          .map((item) => {
+            return item['@id']; //return only urls of all items
+          })
+          .map(url => {
+            this.cacheUrl(url).subscribe((data) => {
+              console.log(data);
+            });
+            let breadcrumbUrl = `${url}/@components/breadcrumbs`;
+            this.cacheUrl(breadcrumbUrl).subscribe((data) => {
+              console.log(data);
+            });
+          });
+        this.storage.set('last-refresh', now);
+      })
+    });
   } 
 
   cacheUrl(url): Observable<any> {
