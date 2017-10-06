@@ -96,7 +96,7 @@ ion-fab[right] {
     border-width: 8px;
 }
 
-sf-form-element > div > button {
+sf-button-widget > button {
     width: 50%;
     padding: 15px;   
     font-size: large; 
@@ -105,13 +105,13 @@ sf-form-element > div > button {
     bottom: 0px;
 }
 
-sf-form-element > div > button:first-of-type {
+sf-form-element-action:first-of-type > sf-button-widget >  button {
     background-color: color($colors, primary, base);
     color: color($colors, light, base);
     left: 0px;
 } 
 
-sf-form-element > div > button:last-of-type {
+sf-form-element-action:last-of-type > sf-button-widget > button {
     background-color: color($colors, light, base);
     color: color($colors, primary, base);
     right: 0px;

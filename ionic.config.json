@@ -1,5 +1,8 @@
 {
   "name": "plone-test",
   "app_id": "e9c8d274",
-  "type": "ionic-angular"
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
 }
